@@ -1,0 +1,27 @@
+<app>
+	<view id="#screen">
+		<template>screen.mst</template>
+		<controller id="ScreenController">
+		</controller>
+	</view>
+	
+	<view id="#dashboard">
+		<template>dashboard/dashboard.mst</template>
+		<controller id="DashboardController">
+		</controller>
+	</view>
+
+	<view id="#login">
+		<template>login/login.mst</template>
+		<controller id="LoginController">
+		</controller>
+	</view>
+	
+	
+	<view id="#debugger">
+		<template>dashboard/debugger/debugger.mst</template>
+		<controller id="DebuggerController">
+		</controller>
+	</view>
+	
+</app>

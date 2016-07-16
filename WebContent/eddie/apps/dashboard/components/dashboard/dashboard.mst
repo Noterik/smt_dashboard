@@ -1,0 +1,43 @@
+<table id="dashboard_selector">
+	{{^username}}
+	<tr>
+		<th id="feedback" colspan="4">Please login before you can use the MST dashboard</th>
+	</tr>
+	{{/username}}
+	{{#username}}
+	<tr>
+		<th colspan="4">Welcome {{username}} use with care !!</th>
+	</tr>
+	<tr>
+		{{#openapps}}
+			<th id="dashboard_openapps" class="selectorbutton">open apps</th>
+		{{/openapps}}
+		{{^openapps}}
+			<td id="dashboard_openapps" class="selectorbutton">open apps</td>
+		{{/openapps}}
+		
+		{{#availapps}}
+			<th id="dashboard_availapps" class="selectorbutton">available apps</th>
+		{{/availapps}}
+		{{^availapps}}
+			<td id="dashboard_availapps" class="selectorbutton">available apps</td>
+		{{/availapps}}
+		
+		{{#usermanagement}}
+			<th id="dashboard_usermanagement" class="selectorbutton">user management</th>
+		{{/usermanagement}}
+		{{^usermanagement}}
+			<td id="dashboard_usermanagement" class="selectorbutton">user management</td>
+		{{/usermanagement}}
+		
+		{{#debugger}}
+			<th id="dashboard_debugger" class="selectorbutton">debugger</th>
+		{{/debugger}}
+		{{^debugger}}
+			<td id="dashboard_debugger" class="selectorbutton">debugger</td>
+		{{/debugger}}
+		
+	</tr>
+	{{/username}}
+</table>
+

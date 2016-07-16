@@ -1,0 +1,3 @@
+<textarea id="debugger_output" rows="36" readonly="readonly">
+</textarea>
+<input id="debugger_console" size="100%" />
