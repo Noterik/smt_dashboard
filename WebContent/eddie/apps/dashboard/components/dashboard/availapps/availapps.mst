@@ -1,0 +1,20 @@
+<table id="availapps_table">
+	<tr>
+		<th>rest Id</th>
+		<th>versions</th>
+		<th>production</th>
+		<th>development</th>
+		<th>status</th>
+	</tr>
+	
+	{{#nodes}}
+	<tr>	
+		<td>{{id}}</td>
+		<td>{{versioncount}}</td>
+		<td>{{productionversion}}</td>
+		<td>{{developmentversion}}</td>
+		<td>{{status}}</td>
+	</tr>
+	{{/nodes}}
+
+</table>

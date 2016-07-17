@@ -11,8 +11,10 @@ import org.springfield.fs.FSListManager;
 import org.springfield.fs.Fs;
 import org.springfield.fs.FsNode;
 import org.springfield.lou.controllers.Html5Controller;
+import org.springfield.lou.controllers.dashboard.availableapps.AvailableAppsController;
 import org.springfield.lou.controllers.dashboard.debugger.DebuggerController;
 import org.springfield.lou.controllers.dashboard.login.LoginController;
+import org.springfield.lou.controllers.dashboard.openapps.OpenAppsController;
 import org.springfield.lou.model.ModelEvent;
 import org.springfield.lou.screen.Screen;
 
@@ -50,18 +52,23 @@ public class DashboardController extends Html5Controller {
 	public void onLogin(ModelEvent e) {
 		FsNode node = e.getTargetFsNode();
 		username = node.getProperty("username");
-		System.out.println("LOGIN EVENT ! "+username);
+		selected = "openapps";
 		fillPage();
+		screen.get("#dashboard").append("div","openapps",new OpenAppsController());	
 	}
 	
 	public void selectOpenApps(Screen s,JSONObject data) {
+	if (selected!=null) s.removeContent(selected);
 		selected = "openapps";
 		fillPage();
+		s.get("#dashboard").append("div","openapps",new OpenAppsController());	
 	}
 	
 	public void selectAvailApps(Screen s,JSONObject data) {
+		if (selected!=null) s.removeContent(selected);
 		selected = "availapps";
 		fillPage();
+		s.get("#dashboard").append("div","availapps",new AvailableAppsController());
 	}
 	
 	public void selectUserManagement(Screen s,JSONObject data) {
@@ -70,9 +77,9 @@ public class DashboardController extends Html5Controller {
 	}
 	
 	public void selectDebugger(Screen s,JSONObject data) {
+		if (selected!=null) s.removeContent(selected);
 		selected = "debugger";
 		fillPage();
-		if (selected!=null) s.removeContent(selected);
 		s.get("#dashboard").append("div","debugger",new DebuggerController());
 		
 	}

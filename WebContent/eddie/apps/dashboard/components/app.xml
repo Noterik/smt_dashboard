@@ -24,4 +24,16 @@
 		</controller>
 	</view>
 	
+	<view id="#openapps">
+		<template>dashboard/openapps/openapps.mst</template>
+		<controller id="OpenAppsController">
+		</controller>
+	</view>
+	
+	<view id="#availapps">
+		<template>dashboard/availapps/availapps.mst</template>
+		<controller id="AvailableAppsController">
+		</controller>
+	</view>
+	
 </app>

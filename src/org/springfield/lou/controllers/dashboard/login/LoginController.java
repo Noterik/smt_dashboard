@@ -33,12 +33,13 @@ public class LoginController extends Html5Controller {
 		String password = (String)data.get("loginpassword");
 		
 		ServiceInterface barney = ServiceManager.getService("barney");
-		System.out.println("BARNEY="+barney);
 		if (barney!=null) {
 			String ticket = barney.get("login("+s.getApplication().getDomain()+","+name+","+password+")", null, null);
 			if (!ticket.equals("-1")) {
 				model.setProperty("/screen/username", name);
-		    	screen.get(selector).html("logged in : "+name);
+				screen.onNewUser(name);
+		    	screen.get(selector).html("Logged in as : "+name);
+		    	screen.get(selector).css("width","170px");
 			} else {
 				screen.get("#feedback").html("wrong account or password");
 			}

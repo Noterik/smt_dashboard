@@ -1,0 +1,18 @@
+<table id="openapps_table">
+	<tr>
+		<th>rest Id</th>
+		<th>open screens</th>
+		<th>screen idcounter</th>
+		<th>user count</th>
+	</tr>
+	
+	{{#nodes}}
+	<tr>	
+		<td>{{id}}</td>
+		<td>{{screencount}}</td>
+		<td>{{screenidcount}}</td>
+		<td>{{usercount}}</td>
+	</tr>
+	{{/nodes}}
+
+</table>
