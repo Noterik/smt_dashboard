@@ -7,7 +7,23 @@
 	z-index: 1000;
 }
 
+
 #availapps_table {
 	position:absolute;
 	width: 100%;
+}
+
+.availappsubmit:hover {
+  	opacity: 0.7;
+}
+
+.availappsubmit {
+  	color:#000000;
+  	border-radius: 6px;
+  	background-color: #eee;
+  	font-size:10pt;
+  	width:100px;
+	top: 5%;
+	bottom: 5%;
+	text-align: center;
 }

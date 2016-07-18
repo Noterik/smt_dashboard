@@ -5,6 +5,7 @@
 		<th>production</th>
 		<th>development</th>
 		<th>status</th>
+		<th>details</th>
 	</tr>
 	
 	{{#nodes}}
@@ -14,6 +15,7 @@
 		<td>{{productionversion}}</td>
 		<td>{{developmentversion}}</td>
 		<td>{{status}}</td>
+		<th><button id="availappsubmit_{{id}}" class="availappsubmit">show</button></th>
 	</tr>
 	{{/nodes}}
 

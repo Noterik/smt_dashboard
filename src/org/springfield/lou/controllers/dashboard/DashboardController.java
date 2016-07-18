@@ -43,10 +43,12 @@ public class DashboardController extends Html5Controller {
 			data.put("username",username);
 		}
  		screen.get(selector).parsehtml(data);
-		screen.get("#dashboard_openapps").on("mouseup","selectOpenApps",this);
-		screen.get("#dashboard_availapps").on("mouseup","selectAvailApps",this);
-		screen.get("#dashboard_usermanagement").on("mouseup","selectUserManagement",this);
-		screen.get("#dashboard_debugger").on("mouseup","selectDebugger",this);
+ 		if (username!=null) {
+ 			screen.get("#dashboard_openapps").on("mouseup","selectOpenApps",this);
+ 			screen.get("#dashboard_availapps").on("mouseup","selectAvailApps",this);
+ 			screen.get("#dashboard_usermanagement").on("mouseup","selectUserManagement",this);
+ 			screen.get("#dashboard_debugger").on("mouseup","selectDebugger",this);
+ 		}
 	}
 	
 	public void onLogin(ModelEvent e) {

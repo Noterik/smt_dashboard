@@ -5,7 +5,6 @@
 		<th>screen idcounter</th>
 		<th>user count</th>
 	</tr>
-	
 	{{#nodes}}
 	<tr>	
 		<td>{{id}}</td>

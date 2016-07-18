@@ -26,7 +26,13 @@ public class AvailableAppsController extends Html5Controller {
 		selector = s;
 		screen.loadStyleSheet("dashboard/availapps/availapps.css");
 		fillPage();
+ 		screen.get(".availappsubmit").on("mouseup","onShow", this);
+
   	}
+	
+    public void onShow(Screen s,JSONObject data) {
+    	System.out.println("WHOOOOOOOOO CLASS EVENT="+data.toJSONString());
+    }
 	
 	private void fillPage() {
 		FSList list = ApplicationManager.instance().getAvailableApplicationsList();
