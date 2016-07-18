@@ -31,7 +31,10 @@ public class AvailableAppsController extends Html5Controller {
   	}
 	
     public void onShow(Screen s,JSONObject data) {
-    	System.out.println("WHOOOOOOOOO CLASS EVENT="+data.toJSONString());
+    	String id = (String)data.get("id");
+    	id = id.substring(id.indexOf("_")+1);
+    	System.out.println("clicked2 on id="+id);
+    	
     }
 	
 	private void fillPage() {

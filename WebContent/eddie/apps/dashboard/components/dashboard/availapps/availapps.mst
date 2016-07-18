@@ -15,7 +15,7 @@
 		<td>{{productionversion}}</td>
 		<td>{{developmentversion}}</td>
 		<td>{{status}}</td>
-		<th><button id="availappsubmit_{{id}}" class="availappsubmit">show</button></th>
+		<td><button id="availappsubmit_{{id}}" class="availappsubmit">show</button></td>
 	</tr>
 	{{/nodes}}
 
