@@ -18,5 +18,4 @@
 		<td><button id="availappsubmit_{{id}}" class="availappsubmit">show</button></td>
 	</tr>
 	{{/nodes}}
-
 </table>

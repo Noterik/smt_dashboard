@@ -33,8 +33,9 @@ public class AvailableAppsController extends Html5Controller {
     public void onShow(Screen s,JSONObject data) {
     	String id = (String)data.get("id");
     	id = id.substring(id.indexOf("_")+1);
-    	System.out.println("clicked2 on id="+id);
-    	
+    	model.setProperty("/screen/appname",id);
+    	System.out.println("show id="+id+" data="+data.toJSONString());
+    	screen.get("#screen").append("div", "appdetails", new AppDetailsController());
     }
 	
 	private void fillPage() {

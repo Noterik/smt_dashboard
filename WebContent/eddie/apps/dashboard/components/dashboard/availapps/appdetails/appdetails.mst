@@ -1,0 +1,40 @@
+<div id="appdetails_blacklayer"></div>
+<div id="appdetails_content">
+	<table id="appdetails_infotable">
+		<tr><th>id</th><td>{{id}}</td></tr>
+		<tr><th>versions</th><td>{{versions}}</td></tr>
+		<tr><th>autodeploy</th>
+			<td><select id="appdetails_select">
+			<option value="{{autodeploy}}">{{autodeploy}}
+			<option value="development">development
+			<option value="production">production
+			<option value="development/production">development/production
+			</select>
+			</td>
+		</tr>
+		<tr><th colspan="2"><button id="appdetails_done" class=".submitbutton">done</button></th></tr>
+	</table>
+	
+	<table id="appdetails_versiontable">
+		<tr>
+			<th>version</th>
+			<th>synced</th>
+			<th>status</th>
+			<th colspan="3">actions</th>
+		</tr>
+		
+		{{#nodes}}
+		<tr>
+			<td>{{version}}</td>
+			<td>{{synced}}</td>
+			<td>{{status}}</td>
+			<td><button id="appdetails_{{appid}}_{{version}}" class="appdetails_develsubmit">devel</button></td>
+			<td><button id="appdetails_version_production_{{appid}_{{version}}" class="appdetails_productionsubmit">production</button></td>
+			<td><button id="appdetails_version_delete_{{appid}}_{{version}}" class="appdetails_deletesubmit">delete</button></td>
+			</td>
+		</tr>
+	 {{/nodes}}
+
+	</table>
+</div>
+		

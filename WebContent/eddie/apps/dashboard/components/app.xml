@@ -36,4 +36,10 @@
 		</controller>
 	</view>
 	
+	<view id="#appdetails">
+		<template>dashboard/availapps/appdetails/appdetails.mst</template>
+		<controller id="AppDetailsController">
+		</controller>
+	</view>
+	
 </app>
