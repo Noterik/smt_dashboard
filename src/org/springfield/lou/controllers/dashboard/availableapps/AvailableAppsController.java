@@ -2,6 +2,7 @@ package org.springfield.lou.controllers.dashboard.availableapps;
 
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.json.simple.JSONObject;
@@ -40,6 +41,8 @@ public class AvailableAppsController extends Html5Controller {
 	
 	private void fillPage() {
 		FSList list = ApplicationManager.instance().getAvailableApplicationsList();
+		List<FsNode> nodes = list.getNodesSorted("id","DOWN");
+		//FSList sortedlist = new FSList("/internal/apps",nodes);
 		JSONObject data = list.toJSONObject(screen.getLanguageCode(),"id,versioncount,productionversion,developmentversion,status");
     	screen.get(selector).parsehtml(data);
 	}

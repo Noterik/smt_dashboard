@@ -1,7 +1,7 @@
 <div id="appdetails_blacklayer"></div>
 <div id="appdetails_content">
 	<table id="appdetails_infotable">
-		<tr><th>id</th><td>{{id}}</td></tr>
+		<tr><th>id</th><td>{{appname}}</td></tr>
 		<tr><th>versions</th><td>{{versions}}</td></tr>
 		<tr><th>autodeploy</th>
 			<td><select id="appdetails_select">

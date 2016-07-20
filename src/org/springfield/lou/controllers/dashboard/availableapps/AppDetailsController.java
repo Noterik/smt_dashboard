@@ -29,12 +29,16 @@ public class AppDetailsController extends Html5Controller {
 		screen.loadStyleSheet("dashboard/availapps/appdetails/appdetails.css");
 		fillPage();
  		screen.get("#appdetails_done").on("mouseup","onClose", this);
- 		screen.get("#appdetails_select").on("onchange","onSelectChange", this);
+ 		screen.get("#appdetails_select").on("change","onSelectChange", this);
  		screen.get(".appdetails_develsubmit").on("mouseup","onDevelSubmit", this);
  
   	}
 	   public void onSelectChange(Screen s,JSONObject data) {
+		   String value = (String)data.get("value");
 		   System.out.println("SELECT CHANGE !!! "+data.toJSONString());
+		   System.out.println("VALUE="+value);
+			String appname = model.getProperty("/screen/appname");
+		    ApplicationManager.instance().setAutoDeploy(appname, value);
 	    }
 
 	
