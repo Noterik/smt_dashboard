@@ -1,0 +1,9 @@
+<table id="memorymanagement_table">
+		<tr><th>total memory</th><td>{{totalmem}}</td><td>MB</td></tr>
+		<tr><th>free memory</th><td>{{freemem}}</td><td>MB</td></tr>
+		<tr><th>used memory</th><td>{{usedmem}}</td><td>MB</td></tr>
+		<tr><th>max memory</th><td>{{maxmem}}</td><td>MB</td></tr>
+		<tr><th>total binds</th><td>{{totalbinds}}</td><td></td></tr>
+		<tr><th>property binds</th><td>{{propertybinds}}</td><<td><button id="memorymanagement_propertysubmit">show</button></td>/tr>
+		<tr><th>properties binds</th><td>{{propertiesbinds}}</td><td><button id="memorymanagement_propertiessubmit">show</button></td></tr>
+</table>

@@ -30,6 +30,18 @@
 		</controller>
 	</view>
 	
+	<view id="#memorymanagement">
+		<template>dashboard/memorymanagement/memorymanagement.mst</template>
+		<controller id="MemoryManagementController">
+		</controller>
+	</view>
+	
+	<view id="#fsbinds">
+		<template>dashboard/memorymanagement/fsbinds/fsbinds.mst</template>
+		<controller id="FsBindsController">
+		</controller>
+	</view>
+	
 	<view id="#availapps">
 		<template>dashboard/availapps/availapps.mst</template>
 		<controller id="AvailableAppsController">

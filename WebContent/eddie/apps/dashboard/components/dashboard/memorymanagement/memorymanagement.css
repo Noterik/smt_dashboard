@@ -1,0 +1,14 @@
+#memorymanagement {
+	position:absolute;
+	left:10%;
+	top:180px;
+	bottom:80px;
+	width:80%;
+	z-index: 1000;
+}
+
+#memorymanagement_table {
+	position:absolute;
+	left: 30%;
+	width: 40%;
+}

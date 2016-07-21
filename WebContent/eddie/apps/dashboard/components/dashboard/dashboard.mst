@@ -6,7 +6,7 @@
 	{{/username}}
 	{{#username}}
 	<tr>
-		<th colspan="4">Welcome {{username}} use with care !!</th>
+		<th colspan="5">Welcome {{username}} use with care !!</th>
 	</tr>
 	<tr>
 		{{#openapps}}
@@ -29,6 +29,13 @@
 		{{^usermanagement}}
 			<td id="dashboard_usermanagement" class="selectorbutton">user management</td>
 		{{/usermanagement}}
+		
+		{{#memorymanagement}}
+			<th id="dashboard_memorymanagement" class="selectorbutton">memory management</th>
+		{{/memorymanagement}}
+		{{^memorymanagement}}
+			<td id="dashboard_memorymanagement" class="selectorbutton">memory management</td>
+		{{/memorymanagement}}
 		
 		{{#debugger}}
 			<th id="dashboard_debugger" class="selectorbutton">debugger</th>
