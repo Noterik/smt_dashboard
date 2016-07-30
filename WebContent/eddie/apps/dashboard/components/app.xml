@@ -30,6 +30,18 @@
 		</controller>
 	</view>
 	
+	<view id="#usermanagement">
+		<template>dashboard/usermanagement/usermanagement.mst</template>
+		<controller id="UserManagementController">
+		</controller>
+	</view>
+	
+	<view id="#usermanagementdetails">
+		<template>dashboard/usermanagement/usermanagementdetails/usermanagementdetails.mst</template>
+		<controller id="UserManagementDetailsController">
+		</controller>
+	</view>
+	
 	<view id="#memorymanagement">
 		<template>dashboard/memorymanagement/memorymanagement.mst</template>
 		<controller id="MemoryManagementController">
@@ -53,5 +65,7 @@
 		<controller id="AppDetailsController">
 		</controller>
 	</view>
+	
+
 	
 </app>

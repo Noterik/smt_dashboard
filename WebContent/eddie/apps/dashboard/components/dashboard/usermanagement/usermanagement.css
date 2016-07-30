@@ -1,0 +1,17 @@
+#usermanagement {
+	position:absolute;
+	left:10%;
+	top:200px;
+	bottom:80px;
+	width:80%;
+	z-index: 1000;
+}
+
+#usermanagement_table {
+	position:absolute;
+	width: 100%;
+}
+
+.usermanagementsubmit:hover {
+ 	background-color: #888888;
+}

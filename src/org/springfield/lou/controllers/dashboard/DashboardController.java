@@ -19,6 +19,8 @@ import org.springfield.lou.controllers.dashboard.openapps.OpenAppsController;
 import org.springfield.lou.model.ModelEvent;
 import org.springfield.lou.screen.Screen;
 
+import usermanagement.UserManagementController;
+
 public class DashboardController extends Html5Controller {
 	
 	private String selected;
@@ -68,6 +70,13 @@ public class DashboardController extends Html5Controller {
 		s.get("#dashboard").append("div","openapps",new OpenAppsController());	
 	}
 	
+	public void selectUserManagement(Screen s,JSONObject data) {
+		if (selected!=null) s.removeContent(selected);
+		selected = "usermanagement";
+		fillPage();
+		s.get("#dashboard").append("div","usermanagement",new UserManagementController());	
+	}
+	
 	public void selectMemoryManagement(Screen s,JSONObject data) {
 		if (selected!=null) s.removeContent(selected);
 		selected = "memorymanagement";
@@ -82,10 +91,6 @@ public class DashboardController extends Html5Controller {
 		s.get("#dashboard").append("div","availapps",new AvailableAppsController());
 	}
 	
-	public void selectUserManagement(Screen s,JSONObject data) {
-		selected = "usermanagement";
-		fillPage();
-	}
 	
 	public void selectDebugger(Screen s,JSONObject data) {
 		if (selected!=null) s.removeContent(selected);

@@ -1,0 +1,52 @@
+<table id="usermanagementdetails_table">
+	<tr>
+		<th colspan="2">{{id}} in domain {{domain}}</th>
+	</tr>
+	<tr>
+		<th>field</th>
+		<th>value</th>
+	</tr>
+	<tr>	
+		<td>firstname</td>
+		<td>
+			<input id="firstname" class="usermanagementdetailssubmit" value="{{firstname}}">
+			<button id="firstnamesave" class="usermanagementdetailssave">save</button>
+		</td>
+		
+	</tr>
+	<tr>	
+		<td>lastname</td><td><input id="lastname" class="usermanagementdetailssubmit" value="{{lastname}}">
+		<button id="lastnamesave" class="usermanagementdetailssave">save</button>
+		</td>
+	</tr>
+	<tr>	
+		<td>password</td><td><input type="password" id="password" class="usermanagementdetailssubmit" value="{{password}}">
+		<button id="passwordsave" class="usermanagementdetailssave">save</button>
+		</td>
+	</tr>
+	<tr>	
+		<td>email</td><td><input id="email" class="usermanagementdetailssubmit" value="{{email}}">
+		<button id="emailsave" class="usermanagementdetailssave">save</button>
+		</td>
+	</tr>
+	<tr>	
+		<td>phonenumber</td><td><input id="phonenum" class="usermanagementdetailssubmit" value="{{phonenum}}">
+		<button id="phonenumsave" class="usermanagementdetailssave">save</button>
+		</td>
+	</tr>
+	<tr>	
+		<td>role</td><td><input id="role" class="usermanagementdetailssubmit" value="{{role}}">
+		<button id="rolesave" class="usermanagementdetailssave">save</button>
+		</td>
+	</tr>
+	<tr>	
+		<td>birthdate</td><td><input id="birthdata" class="usermanagementdetailssubmit" value="{{birthdata}}">
+		<button id="birthdatasave" class="usermanagementdetailssave">save</button>
+		</td>
+	</tr>
+	<tr>	
+		<td>state</td><td><input id="state" class="usermanagementdetailssubmit" value="{{state}}">
+		<button id="statesave" class="usermanagementdetailssave">save</button>
+		</td>
+	</tr>
+</table>

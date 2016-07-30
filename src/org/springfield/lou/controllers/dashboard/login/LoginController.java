@@ -35,11 +35,16 @@ public class LoginController extends Html5Controller {
 		ServiceInterface barney = ServiceManager.getService("barney");
 		if (barney!=null) {
 			String ticket = barney.get("login("+s.getApplication().getDomain()+","+name+","+password+")", null, null);
+			System.out.println("TICKET="+ticket);
 			if (!ticket.equals("-1")) {
-				model.setProperty("/screen/username", name);
-				screen.onNewUser(name);
-		    	screen.get(selector).html("Logged in as : "+name);
-		    	screen.get(selector).css("width","170px");
+				if (name.equals("admin")) {
+					model.setProperty("/screen/username", name);
+					screen.onNewUser(name);
+					screen.get(selector).html("Logged in as : "+name);
+					screen.get(selector).css("width","170px");
+				} else {
+					screen.get("#feedback").html("sorry tools only for user admin");
+				}
 			} else {
 				screen.get("#feedback").html("wrong account or password");
 			}

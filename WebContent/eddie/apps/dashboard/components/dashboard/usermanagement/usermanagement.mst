@@ -1,0 +1,16 @@
+<table id="usermanagement_users">
+	<tr>
+		<th>domain {{domain}}</th>
+	</tr>
+	<tr>
+		<th>account name</th>
+	</tr>
+	<tr>
+		<td><input id="usermanagementsearchkey" value="{{searchkey}}" size="10"></td>
+	</tr>
+	{{#nodes}}
+	<tr>	
+		<td id="{{id}}" class="usermanagementsubmit">{{id}}</td>
+	</tr>
+	{{/nodes}}
+</table>
