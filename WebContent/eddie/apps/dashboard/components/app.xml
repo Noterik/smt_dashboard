@@ -30,6 +30,18 @@
 		</controller>
 	</view>
 	
+	<view id="#explorer">
+		<template>dashboard/explorer/explorer.mst</template>
+		<controller id="ExplorerController">
+		</controller>
+	</view>
+	
+	<view id="#explorerdetails">
+		<template>dashboard/explorer/explorerdetails/explorerdetails.mst</template>
+		<controller id="ExplorerDetailsController">
+		</controller>
+	</view>
+	
 	<view id="#usermanagement">
 		<template>dashboard/usermanagement/usermanagement.mst</template>
 		<controller id="UserManagementController">

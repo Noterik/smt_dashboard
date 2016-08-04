@@ -1,0 +1,15 @@
+<table id="explorer_path">
+	<tr>
+		<th>path: {{#pathelements}}<div id="{{element}}" class="explorerpathsubmit">{{divider}}{{element}}</div>{{/pathelements}}</th>
+	</tr>
+</table>
+<table id="explorer_list">
+	<tr>
+		<td><input id="explorersearchkey" value="{{searchkey}}" size="10"></td>
+	</tr>
+	{{#nodes}}
+	<tr>	
+		<td id="{{name}}" class="explorersubmit">{{name}}</td>
+	</tr>
+	{{/nodes}}
+</table>

@@ -63,18 +63,13 @@ public class UserManagementDetailsController extends Html5Controller {
 	private void fillPage() {
     		String id = model.getProperty("/screen/nodeid");
     		FsNode node = Fs.getNode("/domain/"+screen.getApplication().getDomain()+"/user/"+id+"/account/default");
-    		JSONObject data = new JSONObject();
-    		data.put("domain", screen.getApplication().getDomain());
-    		data.put("id",id);
-			data.put("firstname",node.getProperty("firstname"));
-			data.put("lastname",node.getProperty("lastname"));
-			data.put("email",node.getProperty("email"));
-			data.put("phonenum",node.getProperty("phonenum"));
-			data.put("birthdata",node.getProperty("birthdata"));
-			data.put("state",node.getProperty("state"));
-			data.put("role",node.getProperty("role"));
-			data.put("password","");
-			screen.get(selector).parsehtml(data);
+    		if (node!=null) {
+    			JSONObject data = node.toJSONObject("en","firstname,lastname,email,phonenum,birthdata,state,role");
+    			data.put("domain", screen.getApplication().getDomain());
+    			data.put("id",id);
+    			data.put("password","");
+    			screen.get(selector).parsehtml(data);
+    		}
 	}
 	
 }

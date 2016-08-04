@@ -13,6 +13,7 @@ import org.springfield.fs.FsNode;
 import org.springfield.lou.controllers.Html5Controller;
 import org.springfield.lou.controllers.dashboard.availableapps.AvailableAppsController;
 import org.springfield.lou.controllers.dashboard.debugger.DebuggerController;
+import org.springfield.lou.controllers.dashboard.explorer.ExplorerController;
 import org.springfield.lou.controllers.dashboard.login.LoginController;
 import org.springfield.lou.controllers.dashboard.memorymanagement.MemoryManagmentController;
 import org.springfield.lou.controllers.dashboard.openapps.OpenAppsController;
@@ -51,6 +52,7 @@ public class DashboardController extends Html5Controller {
  			screen.get("#dashboard_availapps").on("mouseup","selectAvailApps",this);
  			screen.get("#dashboard_usermanagement").on("mouseup","selectUserManagement",this);
  			screen.get("#dashboard_memorymanagement").on("mouseup","selectMemoryManagement",this);
+ 			screen.get("#dashboard_explorer").on("mouseup","selectExplorer",this);
  			screen.get("#dashboard_debugger").on("mouseup","selectDebugger",this);
  		}
 	}
@@ -63,8 +65,16 @@ public class DashboardController extends Html5Controller {
 		screen.get("#dashboard").append("div","openapps",new OpenAppsController());	
 	}
 	
+	
+	public void selectExplorer(Screen s,JSONObject data) {
+		if (selected!=null) s.removeContent(selected);
+		selected = "explorer";
+		fillPage();
+		s.get("#dashboard").append("div","explorer",new ExplorerController());	
+	}
+	
 	public void selectOpenApps(Screen s,JSONObject data) {
-	if (selected!=null) s.removeContent(selected);
+		if (selected!=null) s.removeContent(selected);
 		selected = "openapps";
 		fillPage();
 		s.get("#dashboard").append("div","openapps",new OpenAppsController());	

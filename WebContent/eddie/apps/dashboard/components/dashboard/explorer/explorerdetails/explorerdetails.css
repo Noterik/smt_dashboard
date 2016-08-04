@@ -1,0 +1,16 @@
+#explorerdetails {
+	position:absolute;
+	left:32%;
+	width:68%;
+	z-index: 1000;
+}
+
+#explorerdetails_table {
+	position:absolute;
+	width: 100%;
+}
+
+.explorerdetailssave {
+	visibility: hidden;
+}
+

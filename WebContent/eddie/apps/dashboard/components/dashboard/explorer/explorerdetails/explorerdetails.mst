@@ -1,0 +1,15 @@
+<table id="explorerdetails_table">
+	<tr>
+		<th>field</th>
+		<th>value</th>
+	</tr>
+	{{#properties}}
+	<tr>	
+		<td>{{name}}</td>
+		<td>
+			<input id="{{name}}" class="explorerdetailssubmit" value="{{value}}">
+			<button id="{{name}}save" class="explorerdetailssave">save</button>
+		</td>	
+	</tr>
+	{{/properties}}
+</table>
