@@ -13,6 +13,7 @@ import org.springfield.fs.FSListManager;
 import org.springfield.fs.Fs;
 import org.springfield.fs.FsNode;
 import org.springfield.lou.controllers.Html5Controller;
+import org.springfield.lou.model.ModelEvent;
 import org.springfield.lou.screen.Screen;
 
 import usermanagement.UserManagementDetailsController;
@@ -31,18 +32,18 @@ public class ExplorerController extends Html5Controller {
 			path = "/domain/senso";
 			screen.loadStyleSheet("dashboard/explorer/explorer.css");
 	    	JSONObject data = new JSONObject();	
-	    //	screen.get(selector).parsehtml(data);
-			fillPage("*");
+			model.onPropertyUpdate("/screen/explorerpath","onPathChange", this);
+			model.setProperty("/screen/explorerpath",path); // results in a fillPage !
 	  	}
 		
 		private void fillPage(String searchkey) {
 			JSONObject data;
 			List<FsNode> nodes;
 			if (!searchkey.equals("*")) {
-				FSList list = FSListManager.get(path,true);
+				FSList list = FSListManager.get(path,false);
 				nodes = list.getNodes();
 			} else {
-				FSList list = FSListManager.get(path,true);
+				FSList list = FSListManager.get(path,false);
 				nodes = list.getNodes();
 				//nodes = list.getNodesSorted("firstname","DOWN");
 			}
@@ -53,7 +54,6 @@ public class ExplorerController extends Html5Controller {
 				for (int i=0;i<nodes.size();i++) {
 					FsNode node = nodes.get(i);
 					if (!dirs.contains(node.getName())) {
-						System.out.println("WOOOO="+node.getName()+" "+node.getId());
 						FsNode mnode = new FsNode(node.getName(),node.getId());
 						mnode.setProperty("name",node.getName());
 						mainlist.addNode(mnode);
@@ -66,7 +66,6 @@ public class ExplorerController extends Html5Controller {
 				FSList mainlist = new FSList();
 				for (int i=0;i<nodes.size();i++) {
 					FsNode node = nodes.get(i);
-						System.out.println("WOOOO="+node.getName()+" "+node.getId());
 						FsNode mnode = new FsNode(node.getName(),node.getId());
 						mnode.setProperty("name",node.getId());
 						mainlist.addNode(mnode);
@@ -86,10 +85,15 @@ public class ExplorerController extends Html5Controller {
 				pe.add(n);
 			}
 			
-			
 			screen.get(selector).parsehtml(data);
 	 		screen.get(".explorersubmit").on("mouseup","onShow", this);
+	 		screen.get("#explorercreatenode").on("mouseup","explorernewname","onCreateNode", this);
 	 		screen.get(".explorerpathsubmit").on("mouseup","onPathChange", this);
+	 		
+	    	if (!Fs.isMainNode(path)) {
+	    		System.out.println("WANT PROPERTY FIELDS !!!");
+	    		screen.get("#explorer").append("div", "explorerdetails", new ExplorerDetailsController());
+	    	}
 		}
 		
 	    public void onPathChange(Screen s,JSONObject data) {
@@ -98,21 +102,33 @@ public class ExplorerController extends Html5Controller {
 	    	if (pos!=-1) {
 	    		path = path.substring(0,pos)+"/"+id;
 	    	}
-	    	fillPage("*");
+	    	model.setProperty("/screen/explorerpath",path);
+	    }
+	    
+	    public void onCreateNode(Screen s,JSONObject data) {
+	    	String name = (String)data.get("explorernewname");
+	    	if (name==null && name.equals("")) return;
+	    	
+	    	if (Fs.isMainNode(path)) {
+	    		String type = path.substring(path.lastIndexOf("/")+1);
+	    		String shortpath = path.substring(0,path.lastIndexOf("/"));
+	    		FsNode node = new FsNode(type,name);
+	    		if (Fs.insertNode(node,shortpath)) {
+	    			fillPage("*");
+	    		}
+	    	}
 	    }
 		
 	    public void onShow(Screen s,JSONObject data) {
 	    	String id = (String)data.get("id");
 	    	path +="/"+id;
+	    	model.setProperty("/screen/explorerpath",path);
+	    }
+	    
+	    public void onPathChange(ModelEvent e) {
+	    	System.out.println("MODEL EVENT="+e.getTargetFsNode().asXML());
+	    	path = e.getTargetFsNode().getProperty("explorerpath");
 	    	fillPage("*");
-	   
-	    	model.setProperty("/screen/nodeid",path);
-	    	screen.get("#explorerdetails").remove();
-	    	if (!Fs.isMainNode(path)) {
-	    		System.out.println("WANT PROPERTY FIELDS !!!");
-	    		screen.get("#explorer").append("div", "explorerdetails", new ExplorerDetailsController());
-	    	}
-
 	    }
 
 }

@@ -12,4 +12,7 @@
 		<td id="{{name}}" class="explorersubmit">{{name}}</td>
 	</tr>
 	{{/nodes}}
+	<tr>	
+		<td><input id="explorernewname" value="" size="10"><button id="explorercreatenode">create node</button></td>
+	</tr>
 </table>

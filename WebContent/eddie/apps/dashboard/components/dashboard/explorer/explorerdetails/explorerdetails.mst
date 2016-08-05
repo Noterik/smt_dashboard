@@ -8,8 +8,23 @@
 		<td>{{name}}</td>
 		<td>
 			<input id="{{name}}" class="explorerdetailssubmit" value="{{value}}">
-			<button id="{{name}}save" class="explorerdetailssave">save</button>
+			<button id="{{name}}save" class="explorerdetailssave">new</button>
 		</td>	
 	</tr>
 	{{/properties}}
+	<tr>	
+		<td><input id="newname"></td>
+		<td>
+			<input id="newvalue">
+			<button id="newsave">save</button>
+		</td>	
+	</tr>
+	<tr>
+		{{^deleterequest}}
+		<td colspan="2"><button id="explorerdetailsdelete">delete</button></td>
+		{{/deleterequest}}
+		{{#deleterequest}}
+		<td colspan="2">Delete this node ? {{id}} <button id="explorerdetailsdeleteno">no</button> <button id="explorerdetailsdeleteyes">yes</button></td>
+		{{/deleterequest}}
+	</tr>
 </table>

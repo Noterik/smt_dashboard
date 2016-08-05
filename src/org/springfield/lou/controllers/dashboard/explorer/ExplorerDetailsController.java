@@ -27,9 +27,6 @@ public class ExplorerDetailsController extends Html5Controller {
 		selector = s;
 		screen.loadStyleSheet("dashboard/explorer/explorerdetails/explorerdetails.css");
 		fillPage();
- 		screen.get(".explorerdetailssubmit").on("change","onSave", this);
- 		//screen.get(".usermanagementdetailssubmit").on("keypress","onKey", this);
- 		//screen.get(".usermanagementdetailssave").on("mouseup","onSave", this);
   	}
 	
     public void onKey(Screen s,JSONObject data) {
@@ -40,26 +37,59 @@ public class ExplorerDetailsController extends Html5Controller {
 	
 	
     public void onSave(Screen s,JSONObject data) {
-    	System.out.println("SAVE SELECTED="+data.toJSONString());
     	String fieldname = (String)data.get("id");
     	String value = (String)data.get("value");
-   		String path = model.getProperty("/screen/nodeid");
-    	System.out.println("SAVE REAL PATH="+path+" N="+fieldname+" V="+value);
+   		String path = model.getProperty("/screen/explorerpath");
     	model.setProperty(path+"/"+fieldname, value);
    		screen.get("#"+fieldname+"save").css("visibility","hidden");
     }
     
+    public void onNewSave(Screen s,JSONObject data) {
+    	String fieldname = (String)data.get("newname");
+    	String value = (String)data.get("newvalue");
+   		String path = model.getProperty("/screen/explorerpath");
+    	model.setProperty(path+"/"+fieldname, value);
+    	fillPage();
+    }
+    
  	
 	private void fillPage() {
-    		String id = model.getProperty("/screen/nodeid");
+    		String id = model.getProperty("/screen/explorerpath");
+			JSONObject data = new JSONObject();
     		FsNode node = Fs.getNode(id);
     		if (node!=null) {
-    			JSONObject data = node.toJSONObject("en","*");
-    			screen.get(selector).parsehtml(data);
-    		} else {
-    			JSONObject data = new JSONObject();
-       			screen.get(selector).parsehtml(data);   			
+    			data = node.toJSONObject("en","*");
     		}
+    		data.put("id", id);
+    		
+			// do we want to delete the node ?
+			if (model.getProperty("/screen/deleterequest")!=null && model.getProperty("/screen/deleterequest").equals("true")) {
+				data.put("deleterequest","true");
+		    	model.setProperty("/screen/deleterequest","false"); // reset the flag
+			}
+   			screen.get(selector).parsehtml(data);       		
+    		
+     		screen.get(".explorerdetailssubmit").on("change","onSave", this);
+	 		screen.get("#explorerdetailsdelete").on("mouseup","onDeleteRequest", this);
+	 		screen.get("#explorerdetailsdeleteyes").on("mouseup","onDeleteRequestYes", this);
+	 		screen.get("#explorerdetailsdeleteno").on("mouseup","onDeleteRequestNo", this);
+     		screen.get("#newsave").on("mouseup","newname,newvalue","onNewSave", this);
 	}
+	
+    public void onDeleteRequest(Screen s,JSONObject data) {
+    	model.setProperty("/screen/deleterequest","true");
+    	fillPage();
+    }
+    
+    public void onDeleteRequestNo(Screen s,JSONObject data) {
+    	fillPage();
+    }
+    
+    public void onDeleteRequestYes(Screen s,JSONObject data) {
+		String path = model.getProperty("/screen/explorerpath");
+		Fs.deleteNode(path);
+		path = path.substring(0,path.lastIndexOf("/"));
+    	model.setProperty("/screen/explorerpath",path); // should trigger a redraw of the parent
+    }
 	
 }
