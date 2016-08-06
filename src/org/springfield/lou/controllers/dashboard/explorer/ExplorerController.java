@@ -29,7 +29,7 @@ public class ExplorerController extends Html5Controller {
 		
 		public void attach(String s) {
 			selector = s;
-			path = "/domain/senso";
+			path = "/domain/"+screen.getApplication().getDomain();
 			screen.loadStyleSheet("dashboard/explorer/explorer.css");
 	    	JSONObject data = new JSONObject();	
 			model.onPropertyUpdate("/screen/explorerpath","onPathChange", this);
@@ -48,7 +48,7 @@ public class ExplorerController extends Html5Controller {
 				//nodes = list.getNodesSorted("firstname","DOWN");
 			}
 			
-			if (!Fs.isMainNode(path)) {
+			if (!model.isMainNode(path)) {
 				List<String> dirs = new ArrayList<String>();
 				FSList mainlist = new FSList();
 				for (int i=0;i<nodes.size();i++) {
@@ -90,7 +90,7 @@ public class ExplorerController extends Html5Controller {
 	 		screen.get("#explorercreatenode").on("mouseup","explorernewname","onCreateNode", this);
 	 		screen.get(".explorerpathsubmit").on("mouseup","onPathChange", this);
 	 		
-	    	if (!Fs.isMainNode(path)) {
+	    	if (!model.isMainNode(path)) {
 	    		System.out.println("WANT PROPERTY FIELDS !!!");
 	    		screen.get("#explorer").append("div", "explorerdetails", new ExplorerDetailsController());
 	    	}
@@ -109,11 +109,11 @@ public class ExplorerController extends Html5Controller {
 	    	String name = (String)data.get("explorernewname");
 	    	if (name==null && name.equals("")) return;
 	    	
-	    	if (Fs.isMainNode(path)) {
+	    	if (model.isMainNode(path)) {
 	    		String type = path.substring(path.lastIndexOf("/")+1);
 	    		String shortpath = path.substring(0,path.lastIndexOf("/"));
 	    		FsNode node = new FsNode(type,name);
-	    		if (Fs.insertNode(node,shortpath)) {
+	    		if (model.insertNode(node,shortpath)) {
 	    			fillPage("*");
 	    		}
 	    	}
