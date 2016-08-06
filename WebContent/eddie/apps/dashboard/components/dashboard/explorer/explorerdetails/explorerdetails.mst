@@ -1,6 +1,6 @@
 <table id="explorerdetails_table">
 	<tr>
-		<th>field</th>
+		<th>field2</th>
 		<th>value</th>
 	</tr>
 	{{#properties}}
@@ -8,7 +8,8 @@
 		<td>{{name}}</td>
 		<td>
 			<input id="{{name}}" class="explorerdetailssubmit" value="{{value}}">
-			<button id="{{name}}save" class="explorerdetailssave">new</button>
+			<button id="{{name}}save" class="explorerdetailssave">save</button>
+			<button id="{{name}}delete" class="explorerpropertydelete">delete</button>
 		</td>	
 	</tr>
 	{{/properties}}
@@ -24,7 +25,12 @@
 		<td colspan="2"><button id="explorerdetailsdelete">delete</button></td>
 		{{/deleterequest}}
 		{{#deleterequest}}
-		<td colspan="2">Delete this node ? {{id}} <button id="explorerdetailsdeleteno">no</button> <button id="explorerdetailsdeleteyes">yes</button></td>
+		  {{^deleteproperty}}
+			<td colspan="2">Delete this node ? {{id}} <button id="explorerdetailsdeleteno">no</button> <button id="explorerdetailsdeleteyes">yes</button></td>
+		  {{/deleteproperty}}
+		  {{#deleteproperty}}
+			<td colspan="2">Delete property {{deleteproperty}} ? <button id="explorerpropertydeleteno">no</button> <button id="explorerpropertydeleteyes">yes</button></td>
+		  {{/deleteproperty}}
 		{{/deleterequest}}
 	</tr>
 </table>

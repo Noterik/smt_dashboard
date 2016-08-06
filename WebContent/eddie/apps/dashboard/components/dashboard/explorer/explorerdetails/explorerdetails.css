@@ -14,3 +14,11 @@
 	visibility: hidden;
 }
 
+.explorerdetailsdelete {
+	opacity:0;
+}
+
+.explorerdetailsdelete:hover {
+	opacity:1;
+}
+
