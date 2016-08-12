@@ -18,6 +18,7 @@
 		<td>
 			<input id="newvalue">
 			<button id="newsave">save</button>
+			<button id="exploredummybutton">delete</button>
 		</td>	
 	</tr>
 	<tr>

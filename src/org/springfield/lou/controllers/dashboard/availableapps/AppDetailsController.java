@@ -35,8 +35,6 @@ public class AppDetailsController extends Html5Controller {
   	}
 	   public void onSelectChange(Screen s,JSONObject data) {
 		   String value = (String)data.get("value");
-		   System.out.println("SELECT CHANGE !!! "+data.toJSONString());
-		   System.out.println("VALUE="+value);
 			String appname = model.getProperty("/screen/appname");
 		    ApplicationManager.instance().setAutoDeploy(appname, value);
 	    }

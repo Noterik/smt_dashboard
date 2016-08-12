@@ -1,0 +1,19 @@
+<table id="services_table">
+	<tr>
+		<th>name</th>
+		<th># of nodes</th>
+		<th>available</th>
+		<th>description</th>
+		<th>action</th>
+	</tr>
+	{{#nodes}}
+	<tr>	
+		<td>{{name}}</td>
+		<td>{{numberofnodes}}</td>
+		<td>{{available}}</td>
+		<td>{{description}}</td>
+		<td><button id="{{name}}" class="selectorbutton">show nodes</button></td>
+	</tr>
+	{{/nodes}}
+
+</table>

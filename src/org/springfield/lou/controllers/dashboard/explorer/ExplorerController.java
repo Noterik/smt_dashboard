@@ -91,7 +91,6 @@ public class ExplorerController extends Html5Controller {
 	 		screen.get(".explorerpathsubmit").on("mouseup","onPathChange", this);
 	 		
 	    	if (!model.isMainNode(path)) {
-	    		System.out.println("WANT PROPERTY FIELDS !!!");
 	    		screen.get("#explorer").append("div", "explorerdetails", new ExplorerDetailsController());
 	    	}
 		}
@@ -126,7 +125,7 @@ public class ExplorerController extends Html5Controller {
 	    }
 	    
 	    public void onPathChange(ModelEvent e) {
-	    	System.out.println("MODEL EVENT="+e.getTargetFsNode().asXML());
+	    	//System.out.println("MODEL EVENT="+e.getTargetFsNode().asXML());
 	    	path = e.getTargetFsNode().getProperty("explorerpath");
 	    	fillPage("*");
 	    }

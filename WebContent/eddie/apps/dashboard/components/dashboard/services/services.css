@@ -1,0 +1,13 @@
+#services {
+	position:absolute;
+	left:10%;
+	top:140px;
+	bottom:80px;
+	width:80%;
+	z-index: 1000;
+}
+
+#services_table {
+	position:absolute;
+	width: 100%;
+}

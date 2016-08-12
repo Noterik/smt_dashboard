@@ -17,6 +17,7 @@ import org.springfield.lou.controllers.dashboard.explorer.ExplorerController;
 import org.springfield.lou.controllers.dashboard.login.LoginController;
 import org.springfield.lou.controllers.dashboard.memorymanagement.MemoryManagmentController;
 import org.springfield.lou.controllers.dashboard.openapps.OpenAppsController;
+import org.springfield.lou.controllers.dashboard.services.ServicesController;
 import org.springfield.lou.model.ModelEvent;
 import org.springfield.lou.screen.Screen;
 
@@ -48,6 +49,7 @@ public class DashboardController extends Html5Controller {
 		}
  		screen.get(selector).parsehtml(data);
  		if (username!=null) {
+ 			screen.get("#dashboard_services").on("mouseup","selectServices",this);
  			screen.get("#dashboard_openapps").on("mouseup","selectOpenApps",this);
  			screen.get("#dashboard_availapps").on("mouseup","selectAvailApps",this);
  			screen.get("#dashboard_usermanagement").on("mouseup","selectUserManagement",this);
@@ -71,6 +73,13 @@ public class DashboardController extends Html5Controller {
 		selected = "explorer";
 		fillPage();
 		s.get("#dashboard").append("div","explorer",new ExplorerController());	
+	}
+	
+	public void selectServices(Screen s,JSONObject data) {
+		if (selected!=null) s.removeContent(selected);
+		selected = "services";
+		fillPage();
+		s.get("#dashboard").append("div","services",new ServicesController());	
 	}
 	
 	public void selectOpenApps(Screen s,JSONObject data) {

@@ -14,11 +14,17 @@
 	visibility: hidden;
 }
 
-.explorerdetailsdelete {
+
+#exploredummybutton {
 	opacity:0;
 }
 
-.explorerdetailsdelete:hover {
+
+.explorerpropertydelete {
+	opacity:0;
+}
+
+.explorerpropertydelete:hover {
 	opacity:1;
 }
 

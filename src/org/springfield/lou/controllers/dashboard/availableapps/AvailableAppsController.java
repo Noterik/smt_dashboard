@@ -35,14 +35,12 @@ public class AvailableAppsController extends Html5Controller {
     	String id = (String)data.get("id");
     	id = id.substring(id.indexOf("_")+1);
     	model.setProperty("/screen/appname",id);
-    	System.out.println("show id="+id+" data="+data.toJSONString());
     	screen.get("#screen").append("div", "appdetails", new AppDetailsController());
     }
 	
 	private void fillPage() {
 		FSList list = ApplicationManager.instance().getAvailableApplicationsList();
 		List<FsNode> nodes = list.getNodesSorted("id","DOWN");
-		//FSList sortedlist = new FSList("/internal/apps",nodes);
 		JSONObject data = list.toJSONObject(screen.getLanguageCode(),"id,versioncount,productionversion,developmentversion,status");
     	screen.get(selector).parsehtml(data);
 	}

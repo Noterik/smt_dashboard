@@ -30,6 +30,19 @@
 		</controller>
 	</view>
 	
+	<view id="#services">
+		<template>dashboard/services/services.mst</template>
+		<controller id="ServicesController">
+		</controller>
+	</view>
+	
+	
+	<view id="#servicesdetails">
+		<template>dashboard/services/servicesdetails/servicesdetails.mst</template>
+		<controller id="ServicesDetailsController">
+		</controller>
+	</view>
+	
 	<view id="#explorer">
 		<template>dashboard/explorer/explorer.mst</template>
 		<controller id="ExplorerController">

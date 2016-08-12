@@ -1,0 +1,35 @@
+<div id="servicesdetails_blacklayer"></div>
+<div id="servicesdetails_content">
+
+<table id="servicesdetails_infotable">
+		<tr><th>number of nodes</th><td>{{numberofnodes}}</td></tr>
+		<tr><th>available</th><td>{{available}}</td></tr>
+		</tr>
+		<tr><th colspan="2"><button id="servicesdetails_done" class=".submitbutton">done</button></th></tr>
+</table>
+	
+<table id="servicesdetails_table">
+	<tr>
+		<th>name</th>
+		<th>ip number</th>
+		<th>status</th>
+		<th>last seen</th>
+		<th>smithers</th>
+		<th>debug lvl</th>
+		<th>properties</th>
+		<th>delete node</th>
+	</tr>
+	{{#nodes}}
+	<tr>	
+		<td>{{name}}</td>
+		<td>{{ipnumber}}</td>
+		<td>{{status}}</td>
+		<td>{{lastseen}}</td>
+		<td>{{smithers}}</td>
+		<td>{{debuglevel}}</td>
+		<td><button>properties</button></td>
+		<td><button>delete node</button></td>
+	</tr>
+	{{/nodes}}
+</table>
+</div>

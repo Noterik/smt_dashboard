@@ -6,9 +6,16 @@
 	{{/username}}
 	{{#username}}
 	<tr>
-		<th colspan="6">Welcome {{username}} use with care !!</th>
+		<th colspan="7">Welcome {{username}} use with care !!</th>
 	</tr>
 	<tr>
+		{{#services}}
+			<th id="dashboard_services" class="selectorbutton">services</th>
+		{{/services}}
+		{{^services}}
+			<td id="dashboard_services" class="selectorbutton">services</td>
+		{{/services}}
+		
 		{{#openapps}}
 			<th id="dashboard_openapps" class="selectorbutton">open apps</th>
 		{{/openapps}}
