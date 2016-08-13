@@ -30,11 +30,20 @@ public class ServicesDetailsController extends Html5Controller {
 		selector = s;
 		screen.loadStyleSheet("dashboard/services/servicesdetails/servicesdetails.css");
 		fillPage();
- 		//screen.get("#appdetails_done").on("mouseup","onClose", this);
- 		//screen.get("#appdetails_select").on("change","onSelectChange", this);
- 		//screen.get(".appdetails_develsubmit").on("mouseup","onDevelSubmit", this);
- 
+ 		screen.get(selector).on("keypress","onKey", this);
   	}
+	
+    public void onKey(Screen s,JSONObject data) {
+    	String id = (String)data.get("id");
+    	Long keycode = (Long)data.get("which");
+    	if (keycode==27) {
+    		closeEdit();
+			fillPage();
+    		
+    	}
+    	System.out.println("KEY="+keycode);
+    }
+    
 	   public void onSelectChange(Screen s,JSONObject data) {
 		   String value = (String)data.get("value");
 			String appname = model.getProperty("/screen/appname");
@@ -45,11 +54,6 @@ public class ServicesDetailsController extends Html5Controller {
     public void onClose(Screen s,JSONObject data) {
     	screen.removeContent(selector.substring(1));
     }
-
-    public void onDevelSubmit(Screen s,JSONObject data) {
-	    System.out.println("DEVEL SUBMIT="+data.toJSONString());
-    }
-    
 
 	
 	private void fillPage() {
@@ -70,18 +74,90 @@ public class ServicesDetailsController extends Html5Controller {
  				rnode.setProperty("status",node.getProperty("status"));
  				rnode.setProperty("debuglevel",node.getProperty("defaultloglevel"));
 				rnode.setProperty("smithers",node.getProperty("activesmithers"));
+				rnode.setProperty("preferedsmithers",node.getProperty("preferedsmithers"));
  				rnode.setProperty("ipnumber",node.getId());
+ 				String editmode = model.getProperty("/screen/editmode");
+ 				if (editmode!=null && !editmode.equals("")) {
+ 	 				String ipnumber = model.getProperty("/screen/nodename");
+ 	 				if (ipnumber.equals(node.getId())) {
+ 	 					rnode.setProperty(editmode,"true");
+ 	 					System.out.println("SET "+editmode);
+ 	 				}
+ 				}
  				resultlist.addNode(rnode);
  			}
 		}
 		
-		JSONObject data = resultlist.toJSONObject(screen.getLanguageCode(),"name,ipnumber,status,lastseen,smithers,debuglevel");
+		JSONObject data = resultlist.toJSONObject(screen.getLanguageCode(),"name,ipnumber,status,lastseen,smithers,preferedsmithers,debuglevel,editname,editstatus,editsmithers,editdebuglevel");
 		data.put("numberofnodes",nodes.size());
 		data.put("available","100%");
 		screen.get(selector).parsehtml(data);
  		screen.get("#servicesdetails_done").on("mouseup","onClose", this);
- 		//screen.get(".servicesdetails_develsubmit").on("mouseup","onDevelSubmit", this);
+ 		
+ 		// binds for starting editors
+ 		screen.get(".servicesdetails_editname").on("mouseup","onEditName", this);
+ 		screen.get(".servicesdetails_status").on("mousedown","onEditStatus", this);
+ 		screen.get(".servicesdetails_smithers").on("mouseup","onEditSmithers", this);
+ 		screen.get(".servicesdetails_debuglevel").on("mouseup","onEditDebugLevel", this);
+ 		
+ 		// binds for input from editors
+ 		screen.get(".servicesdetails_namechange").on("change","onNameChange", this);
+ 		screen.get(".servicesdetails_statuschange").on("change","onStatusChange", this);
+ 		screen.get(".servicesdetails_debuglevelchange").on("change","onDebugLevelChange", this);
 	}
+	
+    public void onEditName(Screen s,JSONObject data) {
+    	setEditMode(data,"editname");
+    }
+    
+    public void onEditStatus(Screen s,JSONObject data) {
+    	setEditMode(data,"editstatus");
+    }
+    
+    public void onEditSmithers(Screen s,JSONObject data) {
+    	setEditMode(data,"editsmithers");
+    }
+    
+    public void onEditDebugLevel(Screen s,JSONObject data) {
+    	setEditMode(data,"editdebuglevel");
+    }
+    
+    public void onNameChange(Screen s,JSONObject data) {
+		String servicename = model.getProperty("/screen/servicename");
+		model.setProperty("/domain/internal/service/"+servicename+"/nodes/"+(String)data.get("id")+"/name",(String)data.get("value"));
+		System.out.println("/domain/internal/service/"+servicename+"/nodes/"+(String)data.get("id")+"/name"+" v="+(String)data.get("value"));
+    	closeEdit();
+    	fillPage();
+    }
+    
+    public void onStatusChange(Screen s,JSONObject data) {
+		String servicename = model.getProperty("/screen/servicename");
+		model.setProperty("/domain/internal/service/"+servicename+"/nodes/"+(String)data.get("id")+"/status",(String)data.get("value"));
+    	closeEdit();
+		fillPage();
+    }
+    
+    public void onDebugLevelChange(Screen s,JSONObject data) {
+		String servicename = model.getProperty("/screen/servicename");
+		model.setProperty("/domain/internal/service/"+servicename+"/nodes/"+(String)data.get("id")+"/defaultloglevel",(String)data.get("value"));
+    	closeEdit();
+		fillPage();
+    }
+    
+    private void closeEdit() {
+		// cancel edit mode if needed, we should implement a removeProperty
+		model.setProperty("/screen/editmode","");
+		model.setProperty("/screen/nodename","");
+    }
+    
+    private void setEditMode(JSONObject data,String mode) {
+		String editmode = model.getProperty("/screen/editmode");
+		if (editmode==null || editmode.equals("")) {
+			model.setProperty("/screen/editmode",mode);
+			model.setProperty("/screen/nodename",(String)data.get("id"));
+			fillPage();
+		}
+    }
 
 	
 }

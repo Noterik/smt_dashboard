@@ -66,11 +66,12 @@ public class ServicesController extends Html5Controller {
  				
 			JSONObject data = resultlist.toJSONObject(screen.getLanguageCode(),"name,numberofnodes,available,description");
 			screen.get(selector).parsehtml(data);
-	 		screen.get(".selectorbutton").on("mouseup","onShowNode", this);
+	 		screen.get(".showbutton").on("mouseup","onShowNode", this);
 		}
 	}
 	
     public void onShowNode(Screen s,JSONObject data) {
+    	System.out.println("SHOW NODE CALLED");
     	String id = (String)data.get("id");
     	model.setProperty("/screen/servicename",id);
     	screen.get("#screen").append("div", "servicesdetails", new ServicesDetailsController());

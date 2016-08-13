@@ -12,7 +12,7 @@
 		<td>{{numberofnodes}}</td>
 		<td>{{available}}</td>
 		<td>{{description}}</td>
-		<td><button id="{{name}}" class="selectorbutton">show nodes</button></td>
+		<td><button id="{{name}}" class="showbutton">show nodes</button></td>
 	</tr>
 	{{/nodes}}
 

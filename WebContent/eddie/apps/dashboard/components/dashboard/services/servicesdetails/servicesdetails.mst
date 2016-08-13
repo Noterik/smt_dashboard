@@ -15,19 +15,52 @@
 		<th>status</th>
 		<th>last seen</th>
 		<th>smithers</th>
+		<th>prefered smithers</th>
 		<th>debug lvl</th>
-		<th>properties</th>
 		<th>delete node</th>
 	</tr>
 	{{#nodes}}
 	<tr>	
-		<td>{{name}}</td>
+		{{^editname}}
+			<td id="{{ipnumber}}" class="servicesdetails_editname">{{name}}</td>
+		{{/editname}}
+		{{#editname}}
+			<td id="{{ipnumber}}"><input id="{{ipnumber}}" class="servicesdetails_namechange" value="{{name}}" /></td>
+		{{/editname}}
+		
 		<td>{{ipnumber}}</td>
-		<td>{{status}}</td>
+		
+		{{^editstatus}}
+			<td id="{{ipnumber}}" class="servicesdetails_status">{{status}}</td>
+		{{/editstatus}}
+		{{#editstatus}}
+			<td id="{{ipnumber}}" class="servicesdetails_status"><select id="{{ipnumber}}" class="servicesdetails_statuschange">
+			<option value="{{status}}">{{status}}
+			<option value="on">on
+			<option value="off">off
+			</select></td>
+		{{/editstatus}}
+		
 		<td>{{lastseen}}</td>
 		<td>{{smithers}}</td>
-		<td>{{debuglevel}}</td>
-		<td><button>properties</button></td>
+		<td id="{{ipnumber}}" class="servicesdetails_smithers">{{preferedsmithers}}</td>
+		
+		{{^editdebuglevel}}
+			<td id="{{ipnumber}}" class="servicesdetails_debuglevel">{{debuglevel}}</td>
+		{{/editdebuglevel}}
+		{{#editdebuglevel}}
+			<td id="{{ipnumber}}" class="servicesdetails_debuglevel"><select id="{{ipnumber}}" class="servicesdetails_debuglevelchange">
+			<option value="{{debuglevel}}">{{debuglevel}}
+			<option value="info">info
+			<option value="warn">warn
+			<option value="debug">debug
+			<option value="trace">trace
+			<option value="error">error
+			<option value="fatal">fatal
+			<option value="off">off
+			</select></td>
+		{{/editdebuglevel}}
+		
 		<td><button>delete node</button></td>
 	</tr>
 	{{/nodes}}
