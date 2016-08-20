@@ -6,7 +6,7 @@
 	{{/username}}
 	{{#username}}
 	<tr>
-		<th colspan="7">Welcome {{username}} use with care !!</th>
+		<th colspan="8">Welcome {{username}} use with care !!</th>
 	</tr>
 	<tr>
 		{{#services}}
@@ -31,18 +31,25 @@
 		{{/availapps}}
 		
 		{{#usermanagement}}
-			<th id="dashboard_usermanagement" class="selectorbutton">user management</th>
+			<th id="dashboard_usermanagement" class="selectorbutton">users</th>
 		{{/usermanagement}}
 		{{^usermanagement}}
-			<td id="dashboard_usermanagement" class="selectorbutton">user management</td>
+			<td id="dashboard_usermanagement" class="selectorbutton">users</td>
 		{{/usermanagement}}
 		
 		{{#memorymanagement}}
-			<th id="dashboard_memorymanagement" class="selectorbutton">memory management</th>
+			<th id="dashboard_memorymanagement" class="selectorbutton">memory</th>
 		{{/memorymanagement}}
 		{{^memorymanagement}}
-			<td id="dashboard_memorymanagement" class="selectorbutton">memory management</td>
+			<td id="dashboard_memorymanagement" class="selectorbutton">memory</td>
 		{{/memorymanagement}}
+		
+		{{#performancemanagement}}
+			<th id="dashboard_performancemanagement" class="selectorbutton">performance</th>
+		{{/performancemanagement}}
+		{{^performancemanagement}}
+			<td id="dashboard_performancemanagement" class="selectorbutton">performance</td>
+		{{/performancemanagement}}
 		
 		{{#explorer}}
 			<th id="dashboard_explorer" class="selectorbutton">explorer</th>

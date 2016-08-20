@@ -1,0 +1,5 @@
+<table id="performancemanagement_table">
+		<tr><th>total network time</th><td>{{totalnetworktime}}</td><td>{{totalnetworktimetype}}</td></tr>
+		<tr><th>total network calls</th><td>{{totalnetworkcalls}}</td><td>times</td></tr>
+		<tr><th>avg network call</th><td>{{avgnetworkcall}}</td><td>{{avgnetworkcalltype}}</td></tr>
+</table>

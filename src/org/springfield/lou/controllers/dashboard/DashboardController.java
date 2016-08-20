@@ -17,6 +17,7 @@ import org.springfield.lou.controllers.dashboard.explorer.ExplorerController;
 import org.springfield.lou.controllers.dashboard.login.LoginController;
 import org.springfield.lou.controllers.dashboard.memorymanagement.MemoryManagmentController;
 import org.springfield.lou.controllers.dashboard.openapps.OpenAppsController;
+import org.springfield.lou.controllers.dashboard.performancemanagement.PerformanceManagmentController;
 import org.springfield.lou.controllers.dashboard.services.ServicesController;
 import org.springfield.lou.model.ModelEvent;
 import org.springfield.lou.screen.Screen;
@@ -54,6 +55,7 @@ public class DashboardController extends Html5Controller {
  			screen.get("#dashboard_availapps").on("mouseup","selectAvailApps",this);
  			screen.get("#dashboard_usermanagement").on("mouseup","selectUserManagement",this);
  			screen.get("#dashboard_memorymanagement").on("mouseup","selectMemoryManagement",this);
+ 			screen.get("#dashboard_performancemanagement").on("mouseup","selectPerformanceManagement",this);
  			screen.get("#dashboard_explorer").on("mouseup","selectExplorer",this);
  			screen.get("#dashboard_debugger").on("mouseup","selectDebugger",this);
  		}
@@ -101,6 +103,13 @@ public class DashboardController extends Html5Controller {
 		selected = "memorymanagement";
 		fillPage();
 		s.get("#dashboard").append("div","memorymanagement",new MemoryManagmentController());
+	}
+	
+	public void selectPerformanceManagement(Screen s,JSONObject data) {
+		if (selected!=null) s.removeContent(selected);
+		selected = "performancemanagement";
+		fillPage();
+		s.get("#dashboard").append("div","performancemanagement",new PerformanceManagmentController());
 	}
 	
 	public void selectAvailApps(Screen s,JSONObject data) {
