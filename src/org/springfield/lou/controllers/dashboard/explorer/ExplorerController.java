@@ -29,7 +29,8 @@ public class ExplorerController extends Html5Controller {
 		
 		public void attach(String s) {
 			selector = s;
-			path = "/domain/"+screen.getApplication().getDomain();
+		// path = "/domain/"+screen.getApplication().getDomain();
+			path = "/";
 			screen.loadStyleSheet("dashboard/explorer/explorer.css");
 	    	JSONObject data = new JSONObject();	
 			model.onPropertyUpdate("/screen/explorerpath","onPathChange", this);
@@ -37,6 +38,37 @@ public class ExplorerController extends Html5Controller {
 	  	}
 		
 		private void fillPage(String searchkey) {
+			if (path.equals("/")) {
+				fillFromRoot(searchkey);
+			} else if (path.equals("/app")) {
+				
+			} else {
+				fillFromModel(searchkey);
+			}
+		}
+	
+		private void fillFromRoot(String searchkey) {
+			JSONObject data;
+			FSList rootlist = new FSList();
+			FsNode node = new FsNode();
+			node.setProperty("name","app");
+			rootlist.addNode(node);
+			node = new FsNode();
+			node.setProperty("name","domain");
+			rootlist.addNode(node);
+			node = new FsNode();
+			node.setProperty("name","session");
+			rootlist.addNode(node);
+			
+			data = FSList.ArrayToJSONObject(rootlist.getNodes(),screen.getLanguageCode(),"name");
+			data.put("searchkey",searchkey);
+			screen.get(selector).parsehtml(data);
+	 		screen.get(".explorersubmit").on("mouseup","onShow", this);
+	 		screen.get(".explorerpathsubmit").on("mouseup","onPathChange", this);
+		}
+		
+		
+		private void fillFromModel(String searchkey) {
 			JSONObject data;
 			List<FsNode> nodes;
 			if (!searchkey.equals("*")) {
@@ -45,7 +77,6 @@ public class ExplorerController extends Html5Controller {
 			} else {
 				FSList list = FSListManager.get(path,false);
 				nodes = list.getNodes();
-				//nodes = list.getNodesSorted("firstname","DOWN");
 			}
 			
 			if (!model.isMainNode(path)) {
@@ -75,6 +106,7 @@ public class ExplorerController extends Html5Controller {
 			
 			data = FSList.ArrayToJSONObject(nodes,screen.getLanguageCode(),"name");
 			data.put("searchkey",searchkey);
+			
 			JSONArray pe = new JSONArray();
 			data.put("pathelements",pe);
 			String[] pel = path.split("/");
@@ -84,6 +116,9 @@ public class ExplorerController extends Html5Controller {
 				if (i!=0) n.put("divider","/");
 				pe.add(n);
 			}
+			
+			// show create node
+			data.put("createnode","true");
 			
 			screen.get(selector).parsehtml(data);
 	 		screen.get(".explorersubmit").on("mouseup","onShow", this);
@@ -97,6 +132,12 @@ public class ExplorerController extends Html5Controller {
 		
 	    public void onPathChange(Screen s,JSONObject data) {
 	    	String id = (String)data.get("id");
+	    	if (id.equals("/")) {
+	    		path = "/";
+		    	model.setProperty("/screen/explorerpath",path);
+		    	return;
+	    	}
+	    	
 	    	int pos = path.indexOf("/"+id);
 	    	if (pos!=-1) {
 	    		path = path.substring(0,pos)+"/"+id;
@@ -120,12 +161,15 @@ public class ExplorerController extends Html5Controller {
 		
 	    public void onShow(Screen s,JSONObject data) {
 	    	String id = (String)data.get("id");
-	    	path +="/"+id;
+	    	if (path.equals("/")) {
+	    		path = "/"+id;
+	    	} else {
+	    		path +="/"+id;
+	    	}
 	    	model.setProperty("/screen/explorerpath",path);
 	    }
 	    
 	    public void onPathChange(ModelEvent e) {
-	    	//System.out.println("MODEL EVENT="+e.getTargetFsNode().asXML());
 	    	path = e.getTargetFsNode().getProperty("explorerpath");
 	    	fillPage("*");
 	    }

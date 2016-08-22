@@ -1,6 +1,6 @@
 <table id="explorer_path">
 	<tr>
-		<th>path: {{#pathelements}}<div id="{{element}}" class="explorerpathsubmit">{{divider}}{{element}}</div>{{/pathelements}}</th>
+		<th><div id="/" class="explorerpathsubmit">path:</div> {{#pathelements}}<div id="{{element}}" class="explorerpathsubmit">{{divider}}{{element}}</div>{{/pathelements}}</th>
 	</tr>
 </table>
 <table id="explorer_list">
@@ -12,7 +12,9 @@
 		<td id="{{name}}" class="explorersubmit">{{name}}</td>
 	</tr>
 	{{/nodes}}
+	{{#createnode}}
 	<tr>	
 		<td><input id="explorernewname" value="" size="10"><button id="explorercreatenode">create node</button></td>
 	</tr>
+	{{/createnode}}
 </table>

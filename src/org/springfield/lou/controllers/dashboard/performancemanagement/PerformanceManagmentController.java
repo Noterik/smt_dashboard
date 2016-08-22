@@ -42,7 +42,7 @@ public class PerformanceManagmentController extends Html5Controller {
 			data.put("totalnetworktime",""+tt);
 			data.put("totalnetworktimetype","milliseconds");
 		} else {
-			data.put("totalnetworktime",""+(tt/1000));
+			data.put("totalnetworktime",""+(((double)tt)/1000));
 			data.put("totalnetworktimetype","seconds");
 		}
 		data.put("totalnetworkcalls",""+PerformanceManager.getTotalNetworkCalls());
@@ -51,7 +51,7 @@ public class PerformanceManagmentController extends Html5Controller {
 			data.put("avgnetworkcall",""+at);
 			data.put("avgnetworkcalltype","nanoseconds");
 		} else {
-			data.put("avgnetworkcall",""+(at/1000));
+			data.put("avgnetworkcall",""+(((double)at)/1000));
 			data.put("avgnetworkcalltype","milliseconds");
 		}
 		screen.get(selector).parsehtml(data);

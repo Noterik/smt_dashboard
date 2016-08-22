@@ -67,7 +67,10 @@ public class FsBindsController extends Html5Controller {
 				node.setProperty("bindid", key);
 				String oname = bind.obj.toString();
 				oname = oname.substring(oname.lastIndexOf(".")+1);
-				node.setProperty("obj",oname);
+				String sname = bind.screenid;
+				sname = sname.substring(sname.lastIndexOf("/")+1);
+				
+				node.setProperty("obj",oname+","+sname);
 				node.setProperty("bindtype",bindtype);
 				node.setProperty("method",bind.method);
 				list.addNode(node);
