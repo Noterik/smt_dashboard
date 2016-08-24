@@ -150,12 +150,15 @@ public class ExplorerController extends Html5Controller {
 	    	if (name==null && name.equals("")) return;
 	    	
 	    	if (model.isMainNode(path)) {
+	    		System.out.println("MADE NODE INSERT EXPLORER");
 	    		String type = path.substring(path.lastIndexOf("/")+1);
 	    		String shortpath = path.substring(0,path.lastIndexOf("/"));
 	    		FsNode node = new FsNode(type,name);
 	    		if (model.insertNode(node,shortpath)) {
 	    			fillPage("*");
 	    		}
+	    	} else {
+	    		System.out.println("SUBNODE INSERT NOT IMPLEMETED IN EXPLORER");
 	    	}
 	    }
 		

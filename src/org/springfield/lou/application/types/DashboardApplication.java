@@ -19,7 +19,9 @@ import org.springfield.lou.application.*;
 import org.springfield.lou.controllers.*;
 import org.springfield.lou.controllers.dashboard.DashboardController;
 import org.springfield.lou.controllers.dashboard.login.LoginController;
+import org.springfield.lou.controllers.dashboard.openapps.OpenAppsController;
 import org.springfield.lou.homer.LazyHomer;
+import org.springfield.lou.model.ModelEvent;
 import org.springfield.lou.screen.*;
 import org.springfield.lou.servlet.LouServlet;
 
