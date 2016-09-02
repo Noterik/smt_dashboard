@@ -33,7 +33,6 @@ public class DashboardController extends Html5Controller {
 	}
 	
 	public void attach(String sel) {
-		System.out.println("dashboard controller attached called");
 		selector = sel;
 		screen.loadStyleSheet("dashboard/dashboard.css");
 		fillPage();

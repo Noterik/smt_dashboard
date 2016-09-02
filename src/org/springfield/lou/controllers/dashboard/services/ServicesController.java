@@ -71,7 +71,6 @@ public class ServicesController extends Html5Controller {
 	}
 	
     public void onShowNode(Screen s,JSONObject data) {
-    	System.out.println("SHOW NODE CALLED");
     	String id = (String)data.get("id");
     	model.setProperty("/screen/servicename",id);
     	screen.get("#screen").append("div", "servicesdetails", new ServicesDetailsController());
@@ -85,7 +84,7 @@ public class ServicesController extends Html5Controller {
 	}
 	
 	private boolean isUp(FsNode node) {
-		System.out.println("isUp "+node.asXML());
+		//System.out.println("isUp "+node.asXML());
 		return true;
 	}
 	

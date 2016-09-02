@@ -41,7 +41,6 @@ public class ServicesDetailsController extends Html5Controller {
 			fillPage();
     		
     	}
-    	System.out.println("KEY="+keycode);
     }
     
 	   public void onSelectChange(Screen s,JSONObject data) {
@@ -81,7 +80,6 @@ public class ServicesDetailsController extends Html5Controller {
  	 				String ipnumber = model.getProperty("/screen/nodename");
  	 				if (ipnumber.equals(node.getId())) {
  	 					rnode.setProperty(editmode,"true");
- 	 					System.out.println("SET "+editmode);
  	 				}
  				}
  				resultlist.addNode(rnode);
@@ -125,7 +123,6 @@ public class ServicesDetailsController extends Html5Controller {
     public void onNameChange(Screen s,JSONObject data) {
 		String servicename = model.getProperty("/screen/servicename");
 		model.setProperty("/domain/internal/service/"+servicename+"/nodes/"+(String)data.get("id")+"/name",(String)data.get("value"));
-		System.out.println("/domain/internal/service/"+servicename+"/nodes/"+(String)data.get("id")+"/name"+" v="+(String)data.get("value"));
     	closeEdit();
     	fillPage();
     }
