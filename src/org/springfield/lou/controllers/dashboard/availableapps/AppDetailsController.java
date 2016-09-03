@@ -57,8 +57,8 @@ public class AppDetailsController extends Html5Controller {
 		Iterator<Html5AvailableApplicationVersion> it = vapp.getOrderedVersions();
 		FSList list =new FSList();
 		while(it.hasNext()){
-			FsNode node = new FsNode();
 			Html5AvailableApplicationVersion version = it.next();
+			FsNode node = new FsNode("version",vapp.getId());
 			node.setProperty("id", vapp.getId());
 			node.setProperty("version",version.getId());
 			node.setProperty("synced","100%");

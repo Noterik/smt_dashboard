@@ -67,7 +67,7 @@ public class ServicesDetailsController extends Html5Controller {
  			for(Iterator<FsNode> iter = nodes.iterator() ; iter.hasNext(); ) {
  				
  				FsNode node = (FsNode)iter.next();
- 				FsNode rnode = new FsNode();
+ 				FsNode rnode = new FsNode(node.getName(),node.getId());
  				rnode.setProperty("name",node.getProperty("name"));
  				rnode.setProperty("lastseen",node.getProperty("lastseen"));
  				rnode.setProperty("status",node.getProperty("status"));

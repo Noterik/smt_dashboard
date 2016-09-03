@@ -58,7 +58,9 @@ public class ExplorerDetailsController extends Html5Controller {
 	private void fillPage() {
     		String id = model.getProperty("/screen/explorerpath");
 			JSONObject data = new JSONObject();
-    		FsNode node = Fs.getNode(id);
+    		//FsNode node = Fs.getNode(id);
+			System.out.println("EXPLORERPATH="+id);
+    		FsNode node = model.getNode(id);
     		if (node!=null) {
     			data = node.toJSONObject("en","*");
     		}
