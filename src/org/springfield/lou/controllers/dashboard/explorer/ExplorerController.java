@@ -13,6 +13,7 @@ import org.springfield.fs.FSList;
 import org.springfield.fs.FSListManager;
 import org.springfield.fs.Fs;
 import org.springfield.fs.FsNode;
+import org.springfield.fs.FsPropertySet;
 import org.springfield.lou.controllers.Html5Controller;
 import org.springfield.lou.model.ModelEvent;
 import org.springfield.lou.screen.Screen;
@@ -47,7 +48,11 @@ public class ExplorerController extends Html5Controller {
 			node.setProperty("time",new Date().toGMTString());	
 			model.putNode("/shared/bla/user/daniel", node);
 			
-			System.out.println("TEST GETPROP2="+model.getProperty("/shared/bla/user/daniel/video/1/time"));
+			 FsPropertySet ps = new FsPropertySet(); // create a property set
+			 ps.setProperty("x","90"); // add x percentage to property set
+			 ps.setProperty("y","40"); // add y percentage to property set
+
+			 model.setProperties("/shared/pointer/current/"+screen.getShortId(),ps);
 			
 		// path = "/domain/"+screen.getApplication().getDomain();
 			path = "/";
@@ -58,7 +63,6 @@ public class ExplorerController extends Html5Controller {
 	  	}
 		
 		private void fillPage(String searchkey) {
-			System.out.println("FILLPAGE="+path);
 			if (path.equals("/")) {
 				fillFromRoot(searchkey);
 			} else if (path.indexOf("/shared")!=-1) {
@@ -96,10 +100,7 @@ public class ExplorerController extends Html5Controller {
 			List<FsNode> nodes;
 
 			FSList list = screen.getModel().getList(path);
-			System.out.println("FILLNEW1="+path+" L="+list);
-	
 			nodes = list.getNodes();
-			
 			
 			if (!model.isMainNode(path)) {
 				List<String> dirs = new ArrayList<String>();
@@ -236,7 +237,7 @@ public class ExplorerController extends Html5Controller {
 	    	if (name==null && name.equals("")) return;
 	    	
 	    	if (model.isMainNode(path)) {
-	    		System.out.println("MADE NODE INSERT EXPLORER");
+	
 	    		String type = path.substring(path.lastIndexOf("/")+1);
 	    		String shortpath = path.substring(0,path.lastIndexOf("/"));
 	    		FsNode node = new FsNode(type,name);
@@ -244,12 +245,8 @@ public class ExplorerController extends Html5Controller {
 	    			fillPage("*");
 	    		}
 	    	} else {
-	    		System.out.println("SUBNODE INSERT NOT IMPLEMETED IN EXPLORER");
-	    		
 	    		String type = path.substring(path.lastIndexOf("/")+1);
-	    
 	    		FsNode node = new FsNode(name,"1"); // default name to 1
-	    		System.out.println("path="+path+" type="+name);
 	    		if (model.insertNode(node,path)) {
 	    			fillPage("*");
 	    		}
