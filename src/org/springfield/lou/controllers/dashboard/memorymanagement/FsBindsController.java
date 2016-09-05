@@ -43,8 +43,6 @@ public class FsBindsController extends Html5Controller {
 
 	
 	private void fillPage() {
-//		FSList list = ApplicationManager.instance().getOpenApplicationsList();
-//		JSONObject data = list.toJSONObject(screen.getLanguageCode(),"id,screencount,screenidcount,usercount");
 		FSList list = new FSList();
 		
 		String bindtype = model.getProperty("/screen/bindtype");
@@ -53,6 +51,8 @@ public class FsBindsController extends Html5Controller {
 		Map<String, ArrayList<ModelBindObject>> binds;
 		if (bindtype.equals("property")) {
 			binds = mm.getPropertyBinds();
+		} else if (bindtype.equals("path")) {
+				binds = mm.getPathBinds();
 		} else {
 			binds = mm.getPropertiesBinds();	
 		}

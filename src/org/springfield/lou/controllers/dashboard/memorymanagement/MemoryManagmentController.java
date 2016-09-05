@@ -30,6 +30,7 @@ public class MemoryManagmentController extends Html5Controller {
 		fillPage();
  		screen.get("#memorymanagement_propertysubmit").on("mouseup","onPropertyShow", this);
  		screen.get("#memorymanagement_propertiessubmit").on("mouseup","onPropertiesShow", this);
+ 		screen.get("#memorymanagement_pathsubmit").on("mouseup","onPathShow", this);
   	}
 	
     public void onPropertyShow(Screen s,JSONObject data) {
@@ -41,7 +42,11 @@ public class MemoryManagmentController extends Html5Controller {
     	model.setProperty("/screen/bindtype","properties");
     	screen.get("#screen").append("div", "fsbinds", new FsBindsController());
     }
-	
+    
+    public void onPathShow(Screen s,JSONObject data) {
+    	model.setProperty("/screen/bindtype","path");
+    	screen.get("#screen").append("div", "fsbinds", new FsBindsController());
+    }
 	
 	private void fillPage() {
 		FSList list = ApplicationManager.instance().getOpenApplicationsList();
@@ -57,6 +62,7 @@ public class MemoryManagmentController extends Html5Controller {
 		data.put("totalbinds",mm.getTotalBindsCount());
 		data.put("propertybinds",mm.getPropertyBindsCount());
 		data.put("propertiesbinds",mm.getPropertiesBindsCount());
+		data.put("pathbinds",mm.getPathBindsCount());
 		screen.get(selector).parsehtml(data);
 	}
 

@@ -6,4 +6,5 @@
 		<tr><th>total binds</th><td>{{totalbinds}}</td><td></td></tr>
 		<tr><th>property binds</th><td>{{propertybinds}}</td><td><button id="memorymanagement_propertysubmit">show</button></td></tr>
 		<tr><th>properties binds</th><td>{{propertiesbinds}}</td><td><button id="memorymanagement_propertiessubmit">show</button></td></tr>
+		<tr><th>path binds</th><td>{{pathbinds}}</td><td><button id="memorymanagement_pathsubmit">show</button></td></tr>
 </table>
