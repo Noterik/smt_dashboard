@@ -53,6 +53,8 @@ public class FsBindsController extends Html5Controller {
 			binds = mm.getPropertyBinds();
 		} else if (bindtype.equals("path")) {
 				binds = mm.getPathBinds();
+		} else if (bindtype.equals("notify")) {
+			binds = mm.getNotifyBinds();
 		} else {
 			binds = mm.getPropertiesBinds();	
 		}
