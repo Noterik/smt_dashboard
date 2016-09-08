@@ -15,6 +15,7 @@ import org.springfield.lou.application.ApplicationManager;
 import org.springfield.lou.application.Html5ApplicationInterface;
 import org.springfield.lou.controllers.Html5Controller;
 import org.springfield.lou.model.ModelBindObject;
+import org.springfield.lou.model.ModelEvent;
 import org.springfield.lou.model.ModelEventManager;
 import org.springfield.lou.screen.Screen;
 import org.springfield.mojo.interfaces.ServiceInterface;
@@ -31,13 +32,18 @@ public class FsBindsController extends Html5Controller {
 		selector = s;
 		screen.loadStyleSheet("dashboard/memorymanagement/fsbinds/fsbinds.css");
 		fillPage();
+ 		model.onNotify("/shared/internal","onBindChange",this);
   	}
 	
     public void onClose(Screen s,JSONObject data) {
-    	screen.removeContent(selector.substring(1));
+    	screen.get(selector).remove();
     }
     
     public void onReload(Screen s,JSONObject data) {
+    	fillPage();
+    }
+    
+    public void onBindChange(ModelEvent e) {
     	fillPage();
     }
 
@@ -65,7 +71,8 @@ public class FsBindsController extends Html5Controller {
 			List<ModelBindObject> l = (List)binds.get(key);
 			for (int i=0;i<l.size();i++) {
 				ModelBindObject bind = l.get(i);
-				FsNode node = new FsNode("bind",key);
+				//System.out.println("")
+				FsNode node = new FsNode("bind",key+"_"+i);
 				node.setProperty("bindid", key);
 				String oname = bind.obj.toString();
 				oname = oname.substring(oname.lastIndexOf(".")+1);
