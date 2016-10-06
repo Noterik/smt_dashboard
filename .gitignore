@@ -1,2 +1,6 @@
 
 *.class
+
+build/smt_dashboardapp.jar
+
+WebContent/WEB-INF/lib/smt_dashboardapp.jar

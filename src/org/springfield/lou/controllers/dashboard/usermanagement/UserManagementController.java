@@ -1,4 +1,4 @@
-package usermanagement;
+package org.springfield.lou.controllers.dashboard.usermanagement;
 
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +31,7 @@ public class UserManagementController extends Html5Controller {
 	
     public void onShow(Screen s,JSONObject data) {
     	String id = (String)data.get("id");
+    	System.out.println("ID="+id);
     	model.setProperty("/screen/nodeid",id);
     	screen.get("#usermanagementdetails").remove();
     	screen.get("#usermanagement").append("div", "usermanagementdetails", new UserManagementDetailsController());

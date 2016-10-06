@@ -15,10 +15,9 @@ import org.springfield.fs.Fs;
 import org.springfield.fs.FsNode;
 import org.springfield.fs.FsPropertySet;
 import org.springfield.lou.controllers.Html5Controller;
+import org.springfield.lou.controllers.dashboard.usermanagement.UserManagementDetailsController;
 import org.springfield.lou.model.ModelEvent;
 import org.springfield.lou.screen.Screen;
-
-import usermanagement.UserManagementDetailsController;
 
 
 public class ExplorerController extends Html5Controller {

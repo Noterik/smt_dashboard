@@ -28,9 +28,7 @@ public class AppDetailsController extends Html5Controller {
 		selector = s;
 		screen.loadStyleSheet("dashboard/availapps/appdetails/appdetails.css");
 		fillPage();
- 		screen.get("#appdetails_done").on("mouseup","onClose", this);
- 		screen.get("#appdetails_select").on("change","onSelectChange", this);
- 		screen.get(".appdetails_develsubmit").on("mouseup","onDevelSubmit", this);
+
  
   	}
 	   public void onSelectChange(Screen s,JSONObject data) {
@@ -45,7 +43,24 @@ public class AppDetailsController extends Html5Controller {
     }
 
     public void onDevelSubmit(Screen s,JSONObject data) {
-	    System.out.println("DEVEL SUBMIT="+data.toJSONString());
+		String appname = model.getProperty("/screen/appname");
+	    String version = (String)data.get("id");
+	    ApplicationManager.instance().makeDevelopment(appname,version);
+	    fillPage();
+    }
+    
+    public void onProductionSubmit(Screen s,JSONObject data) {
+		String appname = model.getProperty("/screen/appname");
+	    String version = (String)data.get("id");
+	    ApplicationManager.instance().makeProduction(appname,version);
+	    fillPage();
+    }
+    
+    public void onDeleteSubmit(Screen s,JSONObject data) {
+		String appname = model.getProperty("/screen/appname");
+	    String version = (String)data.get("id");
+	    ApplicationManager.instance().deleteVersion(appname,version);
+	    fillPage();
     }
     
 
@@ -55,10 +70,10 @@ public class AppDetailsController extends Html5Controller {
 		Html5AvailableApplication vapp = ApplicationManager.instance().getAvailableApplication(appname);
 		
 		Iterator<Html5AvailableApplicationVersion> it = vapp.getOrderedVersions();
-		FSList list =new FSList();
+		FSList list = new FSList();
 		while(it.hasNext()){
 			Html5AvailableApplicationVersion version = it.next();
-			FsNode node = new FsNode("version",vapp.getId());
+			FsNode node = new FsNode("version",version.getId());
 			node.setProperty("id", vapp.getId());
 			node.setProperty("version",version.getId());
 			node.setProperty("synced","100%");
@@ -74,6 +89,11 @@ public class AppDetailsController extends Html5Controller {
 		data.put("versions",vapp.getVersionsCount());
 		data.put("autodeploy",vapp.getAutoDeploy());		
     	screen.get(selector).parsehtml(data);
+ 		screen.get("#appdetails_done").on("mouseup","onClose", this);
+ 		screen.get("#appdetails_select").on("change","onSelectChange", this);
+ 		screen.get(".appdetails_develsubmit").on("mouseup","onDevelSubmit", this);
+ 		screen.get(".appdetails_productionsubmit").on("mouseup","onProductionSubmit", this);
+ 		screen.get(".appdetails_deletesubmit").on("mouseup","onDeleteSubmit", this);
 	}
 	
 	

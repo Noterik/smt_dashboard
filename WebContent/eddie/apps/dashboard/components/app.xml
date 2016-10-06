@@ -1,4 +1,9 @@
 <app>
+
+	<jumper id="/lou/mupop/mst">
+		<target>/lou/domain/mupop/user/admin/html5application/dashboard</target>
+	</jumper>
+	
 	<view id="#screen">
 		<template>screen.mst</template>
 		<controller id="ScreenController">

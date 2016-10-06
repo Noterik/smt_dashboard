@@ -1,4 +1,4 @@
-package usermanagement;
+package org.springfield.lou.controllers.dashboard.usermanagement;
 
 import java.util.Iterator;
 import java.util.List;

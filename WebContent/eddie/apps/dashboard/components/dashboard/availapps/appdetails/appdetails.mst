@@ -28,9 +28,9 @@
 			<td>{{version}}</td>
 			<td>{{synced}}</td>
 			<td>{{status}}</td>
-			<td><button id="appdetails_{{appid}}_{{version}}" class="appdetails_develsubmit">devel</button></td>
-			<td><button id="appdetails_version_production_{{appid}_{{version}}" class="appdetails_productionsubmit">production</button></td>
-			<td><button id="appdetails_version_delete_{{appid}}_{{version}}" class="appdetails_deletesubmit">delete</button></td>
+			<td><button id="{{version}}" class="appdetails_develsubmit">devel</button></td>
+			<td><button id="{{version}}" class="appdetails_productionsubmit">production</button></td>
+			<td><button id="{{version}}" class="appdetails_deletesubmit">delete</button></td>
 			</td>
 		</tr>
 	 {{/nodes}}

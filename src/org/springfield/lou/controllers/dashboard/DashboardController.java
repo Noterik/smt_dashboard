@@ -19,10 +19,9 @@ import org.springfield.lou.controllers.dashboard.memorymanagement.MemoryManagmen
 import org.springfield.lou.controllers.dashboard.openapps.OpenAppsController;
 import org.springfield.lou.controllers.dashboard.performancemanagement.PerformanceManagmentController;
 import org.springfield.lou.controllers.dashboard.services.ServicesController;
+import org.springfield.lou.controllers.dashboard.usermanagement.UserManagementController;
 import org.springfield.lou.model.ModelEvent;
 import org.springfield.lou.screen.Screen;
-
-import usermanagement.UserManagementController;
 
 public class DashboardController extends Html5Controller {
 	
