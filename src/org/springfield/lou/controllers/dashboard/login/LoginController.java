@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import org.springfield.fs.Fs;
 import org.springfield.fs.FsNode;
 import org.springfield.lou.controllers.Html5Controller;
+import org.springfield.lou.homer.LazyHomer;
 import org.springfield.lou.screen.Screen;
 import org.springfield.mojo.interfaces.ServiceInterface;
 import org.springfield.mojo.interfaces.ServiceManager;
@@ -34,7 +35,7 @@ public class LoginController extends Html5Controller {
 		
 		// check for admin override
 		if (1==1) {
-			if (name.equals("admin") && password.equals("test42")) {
+			if (name.equals("admin") && LazyHomer.getDashboardPassword()!=null && password.equals(LazyHomer.getDashboardPassword())) {
 				model.setProperty("/screen/username", name);
 				screen.onNewUser(name);
 				screen.get(selector).html("Logged in as : "+name);
