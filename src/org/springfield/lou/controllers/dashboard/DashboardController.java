@@ -36,7 +36,12 @@ public class DashboardController extends Html5Controller {
 		screen.loadStyleSheet("dashboard/dashboard.css");
 		fillPage();
 		model.onPropertyUpdate("/screen/username","onLogin",this);
+		model.onPropertyUpdate("/shared['test']/title","onHashCode",this);
 	}
+	
+	 public void onHashCode(ModelEvent e) {
+		 System.out.println("ME2="+e.getTargetFsNode().asXML());
+	 }
 	
 	private void fillPage() {
 		JSONObject data = new JSONObject();

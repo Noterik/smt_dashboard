@@ -1,5 +1,24 @@
 <table id="performancemanagement_table">
-		<tr><th>total network time</th><td>{{totalnetworktime}}</td><td>{{totalnetworktimetype}}</td></tr>
-		<tr><th>total network calls</th><td>{{totalnetworkcalls}}</td><td>times</td></tr>
-		<tr><th>avg network call</th><td>{{avgnetworkcall}}</td><td>{{avgnetworkcalltype}}</td></tr>
+		<tr><th>uptime in seconds</th><td>{{update}}</td><td>seconds</td></tr>
+		<tr><th>total http network time</th><td>{{totalnetworktime}}</td><td>{{totalnetworktimetype}}</td></tr>
+		<tr><th>total http network calls</th><td>{{totalnetworkcalls}}</td><td>times</td></tr>
+		<tr><th>avg http network call</th><td>{{avgnetworkcall}}</td><td>{{avgnetworkcalltype}}</td></tr>
+		<tr><th>&nbsp;</th><td></td><td></td></tr>
+		
+		<tr><th>total socket send time</th><td>{{totalsocketsendtime}}</td><td>{{totalsocketsendtimetype}}</td></tr>
+		<tr><th>total socket send packet count</th><td>{{totalsocketsendcalls}}</td><td>packets</td></tr>
+		<tr><th>avg socket send call</th><td>{{avgsocketsendcall}}</td><td>nanoseconds</td></tr>
+		<tr><th>total socket send volume</th><td>{{totalsocketsendbytes}}</td><td>{{totalsocketsendbytestype}}</td></tr>
+		<tr><th>avg package send size</th><td>{{avgsocketsendbytes}}</td><td>bytes</td></tr>
+		<tr><th>avg uptime send size</th><td>{{avguptimesocketsendbytes}}</td><td>bytes/second</td></tr>
+		<tr><th>&nbsp;</th><td></td><td></td></tr>
+	
+		
+		<tr><th>total socket receive time</th><td>{{totalsocketreceivetime}}</td><td>{{totalsocketreceivetimetype}}</td></tr>
+		<tr><th>total socket receive packet count</th><td>{{totalsocketreceivecalls}}</td><td>packets</td></tr>
+		<tr><th>avg socket receive call</th><td>{{avgsocketreceivecall}}</td><td>nanoseconds</td></tr>
+		<tr><th>total socket receive volume</th><td>{{totalsocketreceivebytes}}</td><td>{{totalsocketreceivebytestype}}</td></tr>
+		<tr><th>avg package receive size</th><td>{{avgsocketreceivebytes}}</td><td>bytes</td></tr>
+		<tr><th>avg uptime receive size</th><td>{{avguptimesocketreceivebytes}}</td><td>bytes/second</td></tr>
+		
 </table>

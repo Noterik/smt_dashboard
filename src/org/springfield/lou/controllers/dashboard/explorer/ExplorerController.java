@@ -240,13 +240,15 @@ public class ExplorerController extends Html5Controller {
 	    		String type = path.substring(path.lastIndexOf("/")+1);
 	    		String shortpath = path.substring(0,path.lastIndexOf("/"));
 	    		FsNode node = new FsNode(type,name);
-	    		if (model.insertNode(node,shortpath)) {
+	    		if (model.putNode(shortpath,node)) {
+	    		//if (model.insertNode(node,shortpath)) {
 	    			fillPage("*");
 	    		}
 	    	} else {
 	    		String type = path.substring(path.lastIndexOf("/")+1);
 	    		FsNode node = new FsNode(name,"1"); // default name to 1
-	    		if (model.insertNode(node,path)) {
+	    		//if (model.insertNode(node,path)) {
+		    	if (model.putNode(path,node)) {	
 	    			fillPage("*");
 	    		}
 	    	}
