@@ -1,7 +1,76 @@
+#domain_header {
+	position:absolute;
+	background-color: #336;
+	text-align: center;
+	font-size:12pt;
+	top: 0px;
+	width: 15%;
+	height:29px;
+	border:1px solid #fff;
+	vertical-align: middle;
+}
+
+#account_header {
+	position:absolute;
+	background-color: #336;
+	text-align: center;
+	font-style: bold;
+	top: 30px;
+	width: 15%;
+	height:29px;
+	border:1px solid #fff;
+	vertical-align: middle;
+}
+
+#account_search {
+	position:absolute;
+	background-color: #336;
+	text-align: center;
+	font-style: bold;
+	top: 60px;
+	width: 15%;
+	height: 29px;
+	border:1px solid #fff;
+	vertical-align: middle;
+}
+
+
+#account_users {
+	position:absolute;
+	background-color: #eee;
+	color: #000000;
+	text-align: center;
+	overflow: auto;
+	top: 90px;
+	height: 320px;
+	width: 15%;
+}
+
+.usermanagementsubmit {
+	height: 29px;
+	border:1px solid #fff;
+}
+
+
+#account_adduser {
+	position:absolute;
+	background-color: #336;
+	text-align: center;
+	font-style: bold;
+	top: 410px;
+	width: 15%;
+	height: 29px;
+	border:1px solid #fff;
+	vertical-align: middle;
+}
+
+
+
+
 #usermanagement {
 	position:absolute;
 	left:10%;
-	top:200px;
+	top:140px;
 	bottom:80px;
 	width:80%;
 	z-index: 1000;

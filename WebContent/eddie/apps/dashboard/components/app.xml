@@ -72,6 +72,15 @@
 		</controller>
 	</view>
 	
+	
+	
+	<view id="#usermanagementnewuser">
+		<template>dashboard/usermanagement/usermanagementnewuser/usermanagementnewuser.mst</template>
+		<controller id="UserManagementNewUserController">
+		</controller>
+	</view>
+	
+	
 	<view id="#usermanagementdetails">
 		<template>dashboard/usermanagement/usermanagementdetails/usermanagementdetails.mst</template>
 		<controller id="UserManagementDetailsController">

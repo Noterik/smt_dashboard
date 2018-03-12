@@ -1,0 +1,13 @@
+#usermanagementnewuser {
+	position:absolute;
+	left:15%;
+	top:0px;
+	bottom:80px;
+	width:60%;
+	z-index: 1000;
+}
+
+#usermanagementnewuser_table {
+	position:absolute;
+	width: 100%;
+}

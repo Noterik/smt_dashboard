@@ -10,3 +10,5 @@ WebContent/WEB-INF/lib/smt_dashboardapp.jar
 *.xml
 
 *.war
+*.jar
+*.war

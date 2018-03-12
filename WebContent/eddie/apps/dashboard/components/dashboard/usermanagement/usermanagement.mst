@@ -1,16 +1,20 @@
-<table id="usermanagement_users">
-	<tr>
-		<th>domain {{domain}}</th>
-	</tr>
-	<tr>
-		<th>account name</th>
-	</tr>
-	<tr>
-		<td><input id="usermanagementsearchkey" value="{{searchkey}}" size="10"></td>
-	</tr>
+<div id="usermanagement_users">
+	<div id="domain_header">
+		domain {{domain}}
+	</div>
+	<div id="account_header">
+		account name
+	</div>
+	<div id="account_search">
+		<input id="usermanagementsearchkey" value="{{searchkey}}" size="10">
+	</div>
+	<div id="account_users">
 	{{#nodes}}
-	<tr>	
-		<td id="{{id}}" class="usermanagementsubmit">{{id}}</td>
-	</tr>
+
+		<div id="{{id}}" class="usermanagementsubmit">{{id}}</div>
 	{{/nodes}}
-</table>
+	</div>
+	<div id="account_adduser">
+				<button id="adduserbutton">new user</button>	
+	</div>
+</div>

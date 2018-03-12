@@ -27,7 +27,14 @@ public class UserManagementController extends Html5Controller {
 		fillPage("*");
  		screen.get(".usermanagementsubmit").on("mouseup","onShow", this);
  		screen.get("#usermanagementsearchkey").on("change","onSearchkeyChange", this);
+ 		screen.get("#account_adduser").on("mouseup","onNewUser", this);
   	}
+	
+    public void onNewUser(Screen s,JSONObject data) {
+    	screen.get("#usermanagementdetails").remove();
+    	screen.get("#usermanagement").append("div", "usermanagementnewuser", new UserManagementNewUserController());
+    }
+
 	
     public void onShow(Screen s,JSONObject data) {
     	String id = (String)data.get("id");

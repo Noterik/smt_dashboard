@@ -1,0 +1,52 @@
+<table id="usermanagementnewuser_table">
+	<tr>
+		<th colspan="2">create new user</th>
+	</tr>
+	<tr>
+		<th>field</th>
+		<th>value</th>
+	</tr>
+	<tr>	
+		<td>account</td>
+		<td>
+			<input id="account">
+		</td>	
+	</tr>
+	<tr>	
+		<td>firstname</td>
+		<td>
+			<input id="firstname">
+		</td>	
+	</tr>
+	<tr>	
+		<td>lastname</td><td><input id="lastname" >
+		</td>
+	</tr>
+	<tr>	
+		<td>password</td><td><input type="password" id="password">
+		</td>
+	</tr>
+	<tr>	
+		<td>email</td><td><input id="email">
+		</td>
+	</tr>
+	<tr>	
+		<td>phonenumber</td><td><input id="phonenum">
+		</td>
+	</tr>
+	<tr>	
+		<td>role</td><td><input id="role">
+		</td>
+	</tr>
+	<tr>	
+		<td>birthdate</td><td><input id="birthdata">
+		</td>
+	</tr>
+	<tr>	
+		<td>state</td><td><input id="state">
+		</td>
+	</tr>
+	<tr>
+		<th colspan="2"><button id="createuser">create user</button></th>
+	</tr>
+</table>
