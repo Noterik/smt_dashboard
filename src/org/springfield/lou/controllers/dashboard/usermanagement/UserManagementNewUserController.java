@@ -27,10 +27,58 @@ public class UserManagementNewUserController extends Html5Controller {
 		selector = s;
 		screen.loadStyleSheet("dashboard/usermanagement/usermanagementnewuser/usermanagementnewuser.css");
 		fillPage();
- 		//screen.get(".usermanagementdetailssubmit").on("change","onSave", this);
- 		//screen.get(".usermanagementdetailssubmit").on("keypress","onKey", this);
- 		//screen.get(".usermanagementdetailssave").on("mouseup","onSave", this);
-  	}
+ 		screen.get("#createuser").on("mouseup","account,firstname,lastname,password,email,phonenum,role,birthdata,state","onCreateUser", this);
+	}
+
+    public void onCreateUser(Screen s,JSONObject data) {
+    	System.out.println("CREATE USER CALLED D="+data.toJSONString());
+    	
+    	//private String createAccount(String domain,String account,String email,String password) {
+		ServiceInterface barney = ServiceManager.getService("barney");
+		if (barney!=null) {
+			System.out.println("Barney interface = "+barney);	
+			
+			String account = ((String)data.get("account")).toLowerCase();
+			String email = (String)data.get("email");
+			String firstname = (String)data.get("firstname");
+			String lastname = (String)data.get("lastname");
+			String phonenum = (String)data.get("phonenum");
+			String role = (String)data.get("role");
+			String birthdata = (String)data.get("birthdata");
+			String state = (String)data.get("state");
+			
+			String password = (String)data.get("password");
+			String domain = screen.getApplication().getDomain();
+			
+			String result = barney.get("userexists("+domain+","+account+","+email+","+password+")", null, null);
+			if (result.equals("true")) {
+				screen.get("#feedback").html("user already exists");
+				return;
+			}
+			/*
+			result = barney.get("approvedaccountname("+domain+","+account+")", null, null);
+			if (result.equals("false")) {
+				screen.get("#feedback").html("user name invalid");
+				return;
+			}
+			*/
+			
+			result = barney.get("createaccount("+domain+","+account+","+email+","+password+")", null, null);
+			if (result!=null) {
+				model.setProperty("/domain/"+screen.getApplication().getDomain()+"/user/"+account+"/account/default/firstname",firstname);
+				model.setProperty("/domain/"+screen.getApplication().getDomain()+"/user/"+account+"/account/default/lastname",lastname);
+				model.setProperty("/domain/"+screen.getApplication().getDomain()+"/user/"+account+"/account/default/phonenum",phonenum);
+				model.setProperty("/domain/"+screen.getApplication().getDomain()+"/user/"+account+"/account/default/role",role);
+				model.setProperty("/domain/"+screen.getApplication().getDomain()+"/user/"+account+"/account/default/birthdata",birthdata);
+				model.setProperty("/domain/"+screen.getApplication().getDomain()+"/user/"+account+"/account/default/state",state);
+
+				screen.get(selector).remove();
+			}
+		}
+	
+    	
+    }
+	
 	
 	/*
     public void onKey(Screen s,JSONObject data) {

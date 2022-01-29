@@ -47,7 +47,6 @@ public class LoginController extends Html5Controller {
 		ServiceInterface barney = ServiceManager.getService("barney");
 		if (barney!=null) {
 			String ticket = barney.get("login("+s.getApplication().getDomain()+","+name+","+password+")", null, null);
-			System.out.println("TICKET="+ticket);
 			if (!ticket.equals("-1")) {
 				if (name.equals("admin")) {
 					model.setProperty("/screen/username", name);

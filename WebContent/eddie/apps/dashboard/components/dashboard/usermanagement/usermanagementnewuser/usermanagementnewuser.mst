@@ -47,6 +47,6 @@
 		</td>
 	</tr>
 	<tr>
-		<th colspan="2"><button id="createuser">create user</button></th>
+		<th colspan="2"><div id="feedback"></div> <button id="createuser">create user</button></th>
 	</tr>
 </table>

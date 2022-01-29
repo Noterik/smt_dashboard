@@ -55,10 +55,10 @@ public class UserManagementController extends Html5Controller {
 		JSONObject data;
 		List<FsNode> nodes;
 		if (!searchkey.equals("*")) {
-			FSList list = FSListManager.get("/domain/"+screen.getApplication().getDomain()+"/user",true);
+			FSList list = FSListManager.get("/domain/"+screen.getApplication().getDomain()+"/user",false);
 			nodes = list.getNodesByIdMatch(searchkey);
 		} else {
-			FSList list = FSListManager.get("/domain/"+screen.getApplication().getDomain()+"/user",true);
+			FSList list = FSListManager.get("/domain/"+screen.getApplication().getDomain()+"/user",false);
 			nodes = list.getNodesSorted("firstname","DOWN");
 		}
 		data = FSList.ArrayToJSONObject(nodes,screen.getLanguageCode(),"");
